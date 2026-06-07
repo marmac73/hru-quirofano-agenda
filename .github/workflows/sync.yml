@@ -1,0 +1,36 @@
+name: Sincronizacion Automatizada Agenda Quirofano
+
+on:
+  schedule:
+    # 22:00 ART (Hora de Argentina) es la 01:00 UTC del día siguiente (ART es UTC-3)
+    - cron: '0 1 * * *'
+  workflow_dispatch: # Permite que puedas ejecutar la sincronización manualmente desde la web de GitHub
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar codigo del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar entorno Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Ejecutar actualizador de base de datos
+        run: python update_database.py
+
+      - name: Compilar archivo unico para Google Sites
+        run: python build_single_file.py
+
+      - name: Subir cambios a GitHub Pages
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add database.js database.json combined_dashboard.html
+          # Comitear y subir solo si hay cambios en los datos de quirófano
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Actualizacion automatica de agenda [GitHub Cloud]" && git push origin main)
