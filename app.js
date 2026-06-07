@@ -50,6 +50,9 @@ const selectionResultsGrid = document.getElementById("selection-results-grid");
 const selectionCountTitle = document.getElementById("selection-count-title");
 const selectionBadgeDesktop = document.getElementById("selection-badge-desktop");
 const selectionBadgeMobile = document.getElementById("selection-badge-mobile");
+const selectionActionsContainer = document.getElementById("selection-actions-container");
+const btnExportCsv = document.getElementById("btn-export-csv");
+const btnCopyClipboard = document.getElementById("btn-copy-clipboard");
 
 // Modal Elements
 const patientModal = document.getElementById("patient-modal");
@@ -67,6 +70,7 @@ function initializeApp() {
         setupViewToggle();
         loadDatabase();
         setupSearchFilters();
+        setupSelectionActions();
     } catch (e) {
         console.error("Critical initialization error:", e);
         // Display error on page so user can see what failed
@@ -1024,6 +1028,7 @@ function renderBookmarks() {
     selectionCountTitle.innerHTML = `<i class="fa-solid fa-star" style="color: var(--warning);"></i> Pacientes Seleccionados: <strong>${bookmarkedList.length}</strong>`;
     
     if (bookmarkedList.length === 0) {
+        if (selectionActionsContainer) selectionActionsContainer.style.display = "none";
         selectionResultsGrid.innerHTML = `
             <div class="empty-results">
                 <i class="fa-regular fa-star" style="font-size: 32px; color: var(--text-muted); display: block; margin-bottom: 12px;"></i>
@@ -1033,7 +1038,108 @@ function renderBookmarks() {
         return;
     }
     
+    if (selectionActionsContainer) selectionActionsContainer.style.display = "inline-flex";
     renderPatientCards(bookmarkedList, selectionResultsGrid);
+}
+
+function setupSelectionActions() {
+    if (btnExportCsv) {
+        btnExportCsv.addEventListener("click", exportSelectionToCSV);
+    }
+    if (btnCopyClipboard) {
+        btnCopyClipboard.addEventListener("click", copySelectionToClipboard);
+    }
+}
+
+// Export selection to Excel CSV
+function exportSelectionToCSV() {
+    const bookmarkedList = database.surgeries.filter(s => bookmarkedSurgeries.includes(s.hash));
+    if (bookmarkedList.length === 0) return;
+    
+    // Header for CSV compatible with Excel in Spanish (using semicolon separator and BOM)
+    let csvContent = "\uFEFF"; // UTF-8 BOM
+    csvContent += "Fecha;Horario;Quirófano;Especialidad;Cirujano;Paciente;DNI;Edad;Cirugía;Obra Social;Anestesia;Observación\n";
+    
+    bookmarkedList.forEach(s => {
+        const row = [
+            s.date || "",
+            s.time_slot || "",
+            s.qx || "Local",
+            s.specialty || "",
+            s.doctor || "",
+            s.patient || "",
+            s.dni || "",
+            s.age || "",
+            s.surgery || "",
+            s.insurance || "",
+            s.anesthesia || "",
+            s.status || ""
+        ].map(val => {
+            // Clean value of semicolons and double quotes to prevent CSV breaking
+            let cleanVal = String(val).replace(/;/g, ",").replace(/"/g, '""');
+            return `"${cleanVal}"`;
+        }).join(";");
+        
+        csvContent += row + "\n";
+    });
+    
+    // Create download link
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", `Mi_Seleccion_Quirofano_${new Date().toISOString().slice(0,10)}.csv`);
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+// Copy selection as TSV (Tab Separated Values) for direct copy-paste into Excel/Google Sheets
+function copySelectionToClipboard() {
+    const bookmarkedList = database.surgeries.filter(s => bookmarkedSurgeries.includes(s.hash));
+    if (bookmarkedList.length === 0) return;
+    
+    // Header and Rows separated by tabs
+    let tsvContent = "Fecha\tHorario\tQuirófano\tEspecialidad\tCirujano\tPaciente\tDNI\tEdad\tCirugía\tObra Social\tAnestesia\tObservación\n";
+    
+    bookmarkedList.forEach(s => {
+        const row = [
+            s.date || "",
+            s.time_slot || "",
+            s.qx || "Local",
+            s.specialty || "",
+            s.doctor || "",
+            s.patient || "",
+            s.dni || "",
+            s.age || "",
+            s.surgery || "",
+            s.insurance || "",
+            s.anesthesia || "",
+            s.status || ""
+        ].map(val => String(val).replace(/\t/g, " ").replace(/\n/g, " ")).join("\t");
+        
+        tsvContent += row + "\n";
+    });
+    
+    navigator.clipboard.writeText(tsvContent).then(() => {
+        const btn = document.getElementById("btn-copy-clipboard");
+        const originalText = btn.innerHTML;
+        btn.innerHTML = `<i class="fa-solid fa-check"></i> ¡Copiado!`;
+        btn.style.backgroundColor = "var(--primary-light)";
+        btn.style.color = "var(--primary)";
+        btn.style.borderColor = "var(--primary)";
+        
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.style.backgroundColor = "white";
+            btn.style.color = "var(--text-main)";
+            btn.style.borderColor = "var(--border-color)";
+        }, 2000);
+    }).catch(err => {
+        console.error("Failed to copy text: ", err);
+        alert("No se pudo copiar automáticamente. Por favor intente de nuevo.");
+    });
 }
 
 // 5. Individual Patient Profile Modal Logic

@@ -36,20 +36,20 @@ def build_combined_html():
             app_content = f.read()
 
     # 1. Replace CSS stylesheet link with inline style tag
-    css_link_pattern = r'<link\s+rel="stylesheet"\s+href="styles\.css"[^>]*>'
-    inline_css = f"<style>\n{css_content}\n</style>"
-    html_content = re.sub(css_link_pattern, inline_css, html_content)
+    css_link_match = re.search(r'<link\s+rel="stylesheet"\s+href="styles\.css"[^>]*>', html_content)
+    if css_link_match:
+        html_content = html_content.replace(css_link_match.group(0), f"<style>\n{css_content}\n</style>")
     
     # 2. Replace script tags with inline scripts
     # Find database.js script tag (handling query params if present)
-    db_script_pattern = r'<script\s+src="database\.js(?:\?v=\d+)?"></script>'
-    inline_db = f"<script>\n{db_content}\n</script>"
-    html_content = re.sub(db_script_pattern, inline_db, html_content)
+    db_script_match = re.search(r'<script\s+src="database\.js(?:\?v=\d+)?"></script>', html_content)
+    if db_script_match:
+        html_content = html_content.replace(db_script_match.group(0), f"<script>\n{db_content}\n</script>")
     
     # Find app.js script tag
-    app_script_pattern = r'<script\s+src="app\.js(?:\?v=\d+)?"></script>'
-    inline_app = f"<script>\n{app_content}\n</script>"
-    html_content = re.sub(app_script_pattern, inline_app, html_content)
+    app_script_match = re.search(r'<script\s+src="app\.js(?:\?v=\d+)?"></script>', html_content)
+    if app_script_match:
+        html_content = html_content.replace(app_script_match.group(0), f"<script>\n{app_content}\n</script>")
     
     # Write output
     with open(output_path, "w", encoding="utf-8") as f:

@@ -237,8 +237,12 @@
                 </div>
                 
                 <div class="search-results-section" style="margin-top: 32px;">
-                    <div class="results-header">
+                    <div class="results-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
                         <h3 id="selection-count-title">0 Pacientes en su Selección</h3>
+                        <div class="selection-actions" id="selection-actions-container" style="display: none; gap: 10px;">
+                            <button id="btn-export-csv" class="btn-success" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: var(--radius-md); font-weight: 600; font-size: 13px; border: none; cursor: pointer; background-color: var(--success); color: white; min-height: 40px; box-shadow: var(--shadow-sm); transition: var(--transition);"><i class="fa-solid fa-file-excel"></i> Descargar Excel (CSV)</button>
+                            <button id="btn-copy-clipboard" class="btn-secondary" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: var(--radius-md); font-weight: 600; font-size: 13px; border: 1px solid var(--border-color); cursor: pointer; background-color: white; color: var(--text-main); min-height: 40px; box-shadow: var(--shadow-sm); transition: var(--transition);"><i class="fa-solid fa-copy"></i> Copiar para Sheets</button>
+                        </div>
                     </div>
                     <div class="patient-grid" id="selection-results-grid">
                         <div class="empty-results">No ha seleccionado ningún paciente aún. Agregue pacientes marcando el ícono de estrella <i class="fa-regular fa-star"></i> en las vistas de búsqueda o historial.</div>
