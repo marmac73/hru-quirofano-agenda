@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Historial de Turnos Quirúrgicos - Hospital Regional Ushuaia</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chart.js for analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar (Desktop only) -->
+        <aside class="app-sidebar">
+            <div class="sidebar-header">
+                <div class="logo-icon"><i class="fa-solid fa-hospital-user"></i></div>
+                <div class="logo-text">
+                    <h1>HRU Quirófano</h1>
+                    <span>Historial & Gestión</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <button class="nav-btn active" data-tab="tab-dashboard">
+                    <i class="fa-solid fa-chart-line"></i> Estadísticas
+                </button>
+                <button class="nav-btn" data-tab="tab-history">
+                    <i class="fa-solid fa-folder-tree"></i> Historial General
+                </button>
+                <button class="nav-btn" data-tab="tab-search">
+                    <i class="fa-solid fa-magnifying-glass"></i> Buscar Turno
+                </button>
+                <button class="nav-btn" data-tab="tab-selection">
+                    <i class="fa-solid fa-star"></i> Mi Selección <span id="selection-badge-desktop" class="badge-count">0</span>
+                </button>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="db-status-card">
+                    <div class="db-status-header">
+                        <i class="fa-solid fa-database"></i>
+                        <span>Estado de Base de Datos</span>
+                    </div>
+                    <div id="db-status-info">
+                        <p>Cargando datos...</p>
+                    </div>
+                    <div class="sync-instruction">
+                        <p><i class="fa-solid fa-circle-info"></i> Para sincronizar nuevos datos de Google Drive, ejecute:</p>
+                        <code>python update_database.py</code>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="app-content">
+            <!-- Top Navbar -->
+            <header class="app-header">
+                <div class="header-title">
+                    <h2 id="current-tab-title">Panel de Estadísticas</h2>
+                    <p id="current-tab-subtitle">Resumen analítico de la programación quirúrgica</p>
+                </div>
+                <div class="header-actions">
+                    <span class="location-badge"><i class="fa-solid fa-location-dot"></i> HRU Ushuaia</span>
+                </div>
+            </header>
+            
+            <!-- Dashboard Tab -->
+            <section id="tab-dashboard" class="tab-content active">
+                <div class="kpi-grid">
+                    <div class="kpi-card glass">
+                        <div class="kpi-icon icon-blue"><i class="fa-solid fa-user-check"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Cirugías Programadas</span>
+                            <h3 class="kpi-value" id="kpi-active-surgeries">-</h3>
+                        </div>
+                    </div>
+                    <div class="kpi-card glass">
+                        <div class="kpi-icon icon-green"><i class="fa-solid fa-calendar-check"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Turnos Libres/Reservas</span>
+                            <h3 class="kpi-value" id="kpi-empty-slots">-</h3>
+                        </div>
+                    </div>
+                    <div class="kpi-card glass">
+                        <div class="kpi-icon icon-orange"><i class="fa-solid fa-stethoscope"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Especialidad Líder</span>
+                            <h3 class="kpi-value" id="kpi-top-specialty">-</h3>
+                        </div>
+                    </div>
+                    <div class="kpi-card glass">
+                        <div class="kpi-icon icon-red"><i class="fa-solid fa-user-doctor"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Médico Más Activo</span>
+                            <h3 class="kpi-value" id="kpi-top-doctor">-</h3>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-grid">
+                    <div class="chart-container glass">
+                        <h4>Distribución por Especialidades Médicas</h4>
+                        <div class="chart-wrapper">
+                            <canvas id="specialtyChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-container glass">
+                        <h4>Volumen de Cirugías por Semana</h4>
+                        <div class="chart-wrapper">
+                            <canvas id="weeklyChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-secondary-grid">
+                    <div class="list-container glass">
+                        <h4>Distribución por Cobertura / Obra Social</h4>
+                        <div class="list-wrapper" id="insurance-list">
+                            <!-- List injected dynamically -->
+                        </div>
+                    </div>
+                    <div class="list-container glass">
+                        <h4>Estado de Documentación / Preparación</h4>
+                        <div class="list-wrapper" id="status-list">
+                            <!-- List injected dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- History Navigation Tab -->
+            <section id="tab-history" class="tab-content">
+                <div class="history-grid">
+                    <div class="history-tree-card glass">
+                        <h3><i class="fa-solid fa-calendar-days"></i> Navegador Temporal</h3>
+                        <p class="history-tip"><i class="fa-solid fa-check-double"></i> Seleccione uno o varios días para ver y comparar agendas.</p>
+                        <div class="tree-container" id="history-tree">
+                            <!-- Hierarchical tree with checkboxes will be injected here -->
+                        </div>
+                    </div>
+                    
+                    <div class="history-table-card glass">
+                        <div class="table-header">
+                            <h3 id="history-selection-title">Agenda del Quirófano</h3>
+                            <div class="header-controls">
+                                <span class="badge" id="table-total-badge">0 Cirugías</span>
+                                <div class="view-toggle">
+                                    <button id="btn-view-grid" class="toggle-btn active"><i class="fa-solid fa-table-cells-large"></i> Grilla</button>
+                                    <button id="btn-view-table" class="toggle-btn"><i class="fa-solid fa-list"></i> Tabla</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Visual Timeline Grid View -->
+                        <div id="history-grid-view" class="history-view-panel active">
+                            <div class="timeline-container" id="history-timeline-container">
+                                <div class="empty-timeline-message">Marque uno o varios días en el navegador temporal para desplegar las cirugías.</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Classic Table View -->
+                        <div id="history-table-view" class="history-view-panel">
+                            <div class="table-wrapper">
+                                <table id="history-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Acciones</th>
+                                            <th>Fecha</th>
+                                            <th>Hora</th>
+                                            <th>Quirófano</th>
+                                            <th>Especialidad</th>
+                                            <th>Cirujano</th>
+                                            <th>Paciente / DNI</th>
+                                            <th>Cirugía / Procedimiento</th>
+                                            <th>Obra Social</th>
+                                            <th>Observación</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="history-table-body">
+                                        <tr>
+                                            <td colspan="10" class="empty-table-message">Marque uno o varios días en el árbol de navegación temporal.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Detailed Search Tab -->
+            <section id="tab-search" class="tab-content">
+                <div class="search-controls glass">
+                    <div class="search-form-row">
+                        <div class="form-group flex-2">
+                            <label for="search-input"><i class="fa-solid fa-magnifying-glass"></i> Buscar por nombre, DNI, médico o especialidad</label>
+                            <input type="text" id="search-input" placeholder="Escriba paciente, DNI, cirujano, obra social...">
+                        </div>
+                        <div class="form-group flex-1">
+                            <label for="date-picker"><i class="fa-solid fa-calendar"></i> Selector de Fecha</label>
+                            <input type="date" id="date-picker">
+                        </div>
+                        <div class="form-group-btn">
+                            <button id="clear-search-btn" class="btn-secondary">Limpiar Filtros</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="search-results-section">
+                    <div class="results-header">
+                        <h3 id="results-count-title">Todos los Turnos</h3>
+                    </div>
+                    <div class="patient-grid" id="search-results-grid">
+                        <!-- Patient detail cards injected dynamically -->
+                        <div class="empty-results">Cargando turnos quirúrgicos...</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Custom Selection Tab -->
+            <section id="tab-selection" class="tab-content">
+                <div class="selection-intro glass">
+                    <h3><i class="fa-solid fa-star" style="color: var(--warning);"></i> Mi Selección Quirúrgica</h3>
+                    <p>Esta sección almacena su lista personalizada de pacientes marcados. Úselo para realizar el seguimiento de pacientes a su cargo, programados para su quirófano, o de interés clínico. Esta lista se almacena automáticamente en este equipo.</p>
+                </div>
+                
+                <div class="search-results-section" style="margin-top: 32px;">
+                    <div class="results-header">
+                        <h3 id="selection-count-title">0 Pacientes en su Selección</h3>
+                    </div>
+                    <div class="patient-grid" id="selection-results-grid">
+                        <div class="empty-results">No ha seleccionado ningún paciente aún. Agregue pacientes marcando el ícono de estrella <i class="fa-regular fa-star"></i> en las vistas de búsqueda o historial.</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Mobile Bottom Navigation Bar -->
+        <nav class="mobile-nav">
+            <button class="mobile-nav-btn active" data-tab="tab-dashboard">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Estadísticas</span>
+            </button>
+            <button class="mobile-nav-btn" data-tab="tab-history">
+                <i class="fa-solid fa-folder-tree"></i>
+                <span>Historial</span>
+            </button>
+            <button class="mobile-nav-btn" data-tab="tab-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>Buscar</span>
+            </button>
+            <button class="mobile-nav-btn" data-tab="tab-selection">
+                <i class="fa-solid fa-star"></i>
+                <span>Selección</span>
+                <span id="selection-badge-mobile" class="badge-count-mobile">0</span>
+            </button>
+        </nav>
+    </div>
+    
+    <!-- Detailed Patient Profile Modal -->
+    <div id="patient-modal" class="modal-overlay" onclick="handleModalOverlayClick(event)">
+        <div class="modal-card glass">
+            <div class="modal-header">
+                <div class="modal-header-title">
+                    <span class="modal-subtitle"><i class="fa-solid fa-address-card"></i> Ficha Quirúrgica Individual</span>
+                    <h3 id="modal-patient-name">Fidele Patricia</h3>
+                </div>
+                <button class="modal-close-btn" onclick="closePatientModal()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" id="modal-patient-body">
+                <!-- Infomation injected dynamically -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Script files -->
+    <script src="database.js?v=2"></script>
+    <script src="app.js?v=2"></script>
+</body>
+</html>
