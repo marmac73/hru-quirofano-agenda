@@ -26,8 +26,21 @@ const kpiTopDoctor = document.getElementById("kpi-top-doctor");
 const insuranceListContainer = document.getElementById("insurance-list");
 const statusListContainer = document.getElementById("status-list");
 
-// Tree & History Table/Grid View Panels
-const historyTreeContainer = document.getElementById("history-tree");
+// History Date Picker & Panels
+const historyDirectDate = document.getElementById("history-direct-date");
+const btnPrevDay = document.getElementById("btn-prev-day");
+const btnNextDay = document.getElementById("btn-next-day");
+const btnQuickToday = document.getElementById("btn-quick-today");
+const btnQuickWeek = document.getElementById("btn-quick-week");
+const btnToggleMulti = document.getElementById("btn-toggle-multi");
+const multiModeState = document.getElementById("multi-mode-state");
+const calPrevMonth = document.getElementById("cal-prev-month");
+const calNextMonth = document.getElementById("cal-next-month");
+const calMonthYearLabel = document.getElementById("cal-month-year-label");
+const miniCalendarGrid = document.getElementById("mini-calendar-grid");
+const selectedDaysCountBadge = document.getElementById("selected-days-count-badge");
+const selectedDaysPills = document.getElementById("selected-days-pills");
+
 const historySelectionTitle = document.getElementById("history-selection-title");
 const historyTableBody = document.getElementById("history-table-body");
 const historyTimelineContainer = document.getElementById("history-timeline-container");
@@ -37,6 +50,26 @@ const btnViewGrid = document.getElementById("btn-view-grid");
 const btnViewTable = document.getElementById("btn-view-table");
 const historyGridViewPanel = document.getElementById("history-grid-view");
 const historyTableViewPanel = document.getElementById("history-table-view");
+
+// Month Name Constants
+const MONTH_NAMES = {
+    "01": "Enero", "02": "Febrero", "03": "Marzo", "04": "Abril",
+    "05": "Mayo", "06": "Junio", "07": "Julio", "08": "Agosto",
+    "09": "Septiembre", "10": "Octubre", "11": "Noviembre", "12": "Diciembre"
+};
+
+const MONTH_NAMES_ES = [
+    "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+];
+
+// History Navigation State
+let calendarCurrentMonth = 8; // 0-indexed (8 = September)
+let calendarCurrentYear = 2026;
+let isMultiSelectMode = false;
+let availableDatesList = [];
+let dateSurgeriesCountMap = {};
+let datePickerListenersAttached = false;
 
 // Search & Datepicker
 const searchInput = document.getElementById("search-input");
@@ -136,7 +169,7 @@ function updateHeaderTitles() {
         if (weeklyChartRef) weeklyChartRef.resize();
     } else if (activeTab === "tab-history") {
         currentTabTitle.textContent = "Historial General";
-        currentTabSubtitle.textContent = "Navegación jerárquica de turnos por fecha";
+        currentTabSubtitle.textContent = "Navegación interactiva de turnos y agenda quirúrgica";
     } else if (activeTab === "tab-search") {
         currentTabTitle.textContent = "Búsqueda Detallada";
         currentTabSubtitle.textContent = "Filtrar por fecha y buscar fichas de pacientes";
@@ -191,7 +224,7 @@ async function loadDatabase() {
         
         renderDatabaseStatus();
         renderDashboard();
-        renderHistoryTree();
+        setupHistoryDatePicker();
         renderSearchResults(); // Load initial patient grid
         updateBookmarkBadges();
     } catch (error) {
@@ -249,13 +282,6 @@ function parseDateParts(dateStr) {
     }
     return { day: "??", month: "??", year: "????" };
 }
-
-// Month Number to Spanish Name
-const MONTH_NAMES = {
-    "01": "Enero", "02": "Febrero", "03": "Marzo", "04": "Abril",
-    "05": "Mayo", "06": "Junio", "07": "Julio", "08": "Agosto",
-    "09": "Septiembre", "10": "Octubre", "11": "Noviembre", "12": "Diciembre"
-};
 
 // 1. Dashboard Tab Functions
 function renderDashboard() {
@@ -450,130 +476,347 @@ function renderStatusList(activeSurgeries) {
     }).join("");
 }
 
-// 2. History Navigation Tree Tab
-function renderHistoryTree() {
-    const hierarchy = {};
-    
-    database.surgeries.forEach(s => {
-        const parts = parseDateParts(s.date);
-        const year = parts.year;
-        const monthNum = parts.month;
-        const monthName = MONTH_NAMES[monthNum] || monthNum;
-        const week = s.source_folder_name || "Semana Desconocida";
-        const day = s.date;
-        const dayLabel = `${s.day} ${parts.day}/${parts.month}`;
-        
-        if (!hierarchy[year]) hierarchy[year] = {};
-        if (!hierarchy[year][monthName]) hierarchy[year][monthName] = {};
-        if (!hierarchy[year][monthName][week]) hierarchy[year][monthName][week] = {};
-        if (!hierarchy[year][monthName][week][day]) {
-            hierarchy[year][monthName][week][day] = {
-                label: dayLabel,
-                surgeries: []
-            };
-        }
-        hierarchy[year][monthName][week][day].surgeries.push(s);
-    });
-    
-    let treeHTML = "";
-    const sortedYears = Object.keys(hierarchy).sort().reverse();
-    for (const year of sortedYears) {
-        treeHTML += `
-            <div class="tree-node expanded">
-                <div class="tree-node-title" onclick="toggleTreeNode(this)"><i class="fa-solid fa-chevron-down"></i> <i class="fa-solid fa-calendar"></i> Año ${year}</div>
-                <div class="tree-node-children">
-        `;
-        
-        const sortedMonths = Object.keys(hierarchy[year]).sort();
-        for (const month of sortedMonths) {
-            treeHTML += `
-                <div class="tree-node expanded">
-                    <div class="tree-node-title" onclick="toggleTreeNode(this)"><i class="fa-solid fa-chevron-down"></i> <i class="fa-solid fa-calendar-minus"></i> ${month}</div>
-                    <div class="tree-node-children">
-            `;
-            
-            const sortedWeeks = Object.keys(hierarchy[year][month]).sort();
-            for (const week of sortedWeeks) {
-                treeHTML += `
-                    <div class="tree-node expanded">
-                        <div class="tree-node-title" onclick="toggleTreeNode(this)"><i class="fa-solid fa-chevron-down"></i> <i class="fa-solid fa-folder-open"></i> ${week}</div>
-                        <div class="tree-node-children">
-                `;
-                
-                const sortedDays = Object.keys(hierarchy[year][month][week]).sort((a,b) => {
-                    const da = a.split("/");
-                    const db = b.split("/");
-                    return new Date(da[2], da[1], da[0]) - new Date(db[2], db[1], db[0]);
-                });
-                
-                for (const day of sortedDays) {
-                    const dayObj = hierarchy[year][month][week][day];
-                    const activeCount = dayObj.surgeries.filter(s => !s.is_empty_slot).length;
-                    
-                    treeHTML += `
-                        <div class="tree-node">
-                            <div class="tree-node-title leaf" onclick="handleDayTextClick(this)">
-                                <input type="checkbox" class="tree-cb" data-day="${day}" onchange="handleDayCheckboxChange(event)">
-                                <span>${dayObj.label} (${activeCount})</span>
-                            </div>
-                        </div>
-                    `;
-                }
-                treeHTML += `</div></div>`;
-            }
-            treeHTML += `</div></div>`;
-        }
-        treeHTML += `</div></div>`;
+// 2. History Date Picker & Mini-Calendar Navigation
+function formatDateToISO(ddmmyyyy) {
+    if (!ddmmyyyy || typeof ddmmyyyy !== 'string') return "";
+    const parts = ddmmyyyy.split("/");
+    if (parts.length === 3) {
+        return `${parts[2]}-${parts[1].padStart(2, '0')}-${parts[0].padStart(2, '0')}`;
     }
-    historyTreeContainer.innerHTML = treeHTML;
-    
-    // Check and select first day by default
-    const firstCheckbox = historyTreeContainer.querySelector(".tree-cb");
-    if (firstCheckbox) {
-        firstCheckbox.checked = true;
-        selectedTreeDays = [firstCheckbox.getAttribute("data-day")];
-        firstCheckbox.closest(".tree-node-title.leaf").classList.add("selected");
+    return "";
+}
+
+function formatISOToDate(yyyymmdd) {
+    if (!yyyymmdd || typeof yyyymmdd !== 'string') return "";
+    const parts = yyyymmdd.split("-");
+    if (parts.length === 3) {
+        return `${parts[2].padStart(2, '0')}/${parts[1].padStart(2, '0')}/${parts[0]}`;
+    }
+    return "";
+}
+
+function compareDateStrings(a, b) {
+    if (!a || !b) return 0;
+    const da = a.split("/");
+    const db = b.split("/");
+    if (da.length !== 3 || db.length !== 3) return a.localeCompare(b);
+    return new Date(da[2], da[1] - 1, da[0]) - new Date(db[2], db[1] - 1, db[0]);
+}
+
+function setupHistoryDatePicker() {
+    // 1. Gather all unique dates and count active surgeries
+    const datesMap = {};
+    database.surgeries.forEach(s => {
+        if (!s.date || !s.date.includes("/")) return;
+        if (!datesMap[s.date]) {
+            datesMap[s.date] = { total: 0, active: 0 };
+        }
+        datesMap[s.date].total++;
+        if (!s.is_empty_slot) {
+            datesMap[s.date].active++;
+        }
+    });
+
+    availableDatesList = Object.keys(datesMap).sort(compareDateStrings);
+    dateSurgeriesCountMap = {};
+    for (const d of availableDatesList) {
+        dateSurgeriesCountMap[d] = datesMap[d].active;
+    }
+
+    if (availableDatesList.length === 0) {
+        selectedTreeDays = [];
+        renderSelectedDaysSummary();
         renderSelectedDays();
+        return;
+    }
+
+    // Direct Date Picker constraints
+    if (historyDirectDate) {
+        historyDirectDate.min = formatDateToISO(availableDatesList[0]);
+        historyDirectDate.max = formatDateToISO(availableDatesList[availableDatesList.length - 1]);
+    }
+
+    // Default selection: select the latest available date
+    const latestDate = availableDatesList[availableDatesList.length - 1];
+    selectedTreeDays = [latestDate];
+
+    if (historyDirectDate) {
+        historyDirectDate.value = formatDateToISO(latestDate);
+    }
+
+    // Initialize calendar to the month of the selected date
+    const dParts = parseDateParts(latestDate);
+    calendarCurrentYear = parseInt(dParts.year) || new Date().getFullYear();
+    calendarCurrentMonth = (parseInt(dParts.month) || (new Date().getMonth() + 1)) - 1;
+
+    // Attach listeners
+    setupDatePickerListeners();
+
+    // Render calendar, summary, and selected surgeries
+    renderMiniCalendar();
+    renderSelectedDaysSummary();
+    renderSelectedDays();
+}
+
+function setupDatePickerListeners() {
+    if (datePickerListenersAttached) return;
+    datePickerListenersAttached = true;
+
+    if (historyDirectDate) {
+        historyDirectDate.addEventListener("change", (e) => {
+            const isoVal = e.target.value;
+            if (!isoVal) return;
+            const ddmmyyyy = formatISOToDate(isoVal);
+            
+            if (!isMultiSelectMode) {
+                selectedTreeDays = [ddmmyyyy];
+            } else {
+                if (!selectedTreeDays.includes(ddmmyyyy)) {
+                    selectedTreeDays.push(ddmmyyyy);
+                }
+            }
+            
+            // Sync calendar month/year
+            const parts = ddmmyyyy.split("/");
+            if (parts.length === 3) {
+                calendarCurrentYear = parseInt(parts[2]);
+                calendarCurrentMonth = parseInt(parts[1]) - 1;
+            }
+            
+            renderMiniCalendar();
+            renderSelectedDaysSummary();
+            renderSelectedDays();
+        });
+    }
+
+    if (btnPrevDay) {
+        btnPrevDay.addEventListener("click", () => {
+            if (availableDatesList.length === 0) return;
+            const currentDay = selectedTreeDays[0] || availableDatesList[0];
+            const currentIndex = availableDatesList.indexOf(currentDay);
+            let prevIndex = currentIndex - 1;
+            if (currentIndex === -1) {
+                prevIndex = availableDatesList.findIndex(d => compareDateStrings(d, currentDay) >= 0) - 1;
+            }
+            if (prevIndex < 0) prevIndex = 0;
+            const targetDate = availableDatesList[prevIndex];
+            
+            if (!isMultiSelectMode) {
+                selectedTreeDays = [targetDate];
+            } else {
+                if (!selectedTreeDays.includes(targetDate)) {
+                    selectedTreeDays.push(targetDate);
+                }
+            }
+            
+            if (historyDirectDate) historyDirectDate.value = formatDateToISO(targetDate);
+            const parts = targetDate.split("/");
+            calendarCurrentYear = parseInt(parts[2]);
+            calendarCurrentMonth = parseInt(parts[1]) - 1;
+            
+            renderMiniCalendar();
+            renderSelectedDaysSummary();
+            renderSelectedDays();
+        });
+    }
+
+    if (btnNextDay) {
+        btnNextDay.addEventListener("click", () => {
+            if (availableDatesList.length === 0) return;
+            const currentDay = selectedTreeDays[selectedTreeDays.length - 1] || availableDatesList[0];
+            const currentIndex = availableDatesList.indexOf(currentDay);
+            let nextIndex = currentIndex + 1;
+            if (nextIndex >= availableDatesList.length) nextIndex = availableDatesList.length - 1;
+            const targetDate = availableDatesList[nextIndex];
+            
+            if (!isMultiSelectMode) {
+                selectedTreeDays = [targetDate];
+            } else {
+                if (!selectedTreeDays.includes(targetDate)) {
+                    selectedTreeDays.push(targetDate);
+                }
+            }
+            
+            if (historyDirectDate) historyDirectDate.value = formatDateToISO(targetDate);
+            const parts = targetDate.split("/");
+            calendarCurrentYear = parseInt(parts[2]);
+            calendarCurrentMonth = parseInt(parts[1]) - 1;
+            
+            renderMiniCalendar();
+            renderSelectedDaysSummary();
+            renderSelectedDays();
+        });
+    }
+
+    if (btnQuickToday) {
+        btnQuickToday.addEventListener("click", () => {
+            if (availableDatesList.length === 0) return;
+            const latestDate = availableDatesList[availableDatesList.length - 1];
+            selectedTreeDays = [latestDate];
+            if (historyDirectDate) historyDirectDate.value = formatDateToISO(latestDate);
+            const parts = latestDate.split("/");
+            calendarCurrentYear = parseInt(parts[2]);
+            calendarCurrentMonth = parseInt(parts[1]) - 1;
+            
+            renderMiniCalendar();
+            renderSelectedDaysSummary();
+            renderSelectedDays();
+        });
+    }
+
+    if (btnQuickWeek) {
+        btnQuickWeek.addEventListener("click", () => {
+            if (selectedTreeDays.length === 0 && availableDatesList.length > 0) {
+                selectedTreeDays = [availableDatesList[availableDatesList.length - 1]];
+            }
+            const refDate = selectedTreeDays[0];
+            const sampleSurgery = database.surgeries.find(s => s.date === refDate && s.source_folder_name);
+            let weekDays = [];
+            if (sampleSurgery && sampleSurgery.source_folder_name) {
+                const folder = sampleSurgery.source_folder_name;
+                weekDays = [...new Set(database.surgeries.filter(s => s.source_folder_name === folder).map(s => s.date))];
+            }
+            if (weekDays.length === 0) {
+                const refIdx = availableDatesList.indexOf(refDate);
+                const start = Math.max(0, refIdx - 2);
+                const end = Math.min(availableDatesList.length, start + 5);
+                weekDays = availableDatesList.slice(start, end);
+            }
+            weekDays.sort(compareDateStrings);
+            selectedTreeDays = weekDays;
+            
+            renderMiniCalendar();
+            renderSelectedDaysSummary();
+            renderSelectedDays();
+        });
+    }
+
+    if (btnToggleMulti) {
+        btnToggleMulti.addEventListener("click", () => {
+            isMultiSelectMode = !isMultiSelectMode;
+            if (multiModeState) {
+                multiModeState.textContent = isMultiSelectMode ? "ON" : "OFF";
+            }
+            btnToggleMulti.classList.toggle("active", isMultiSelectMode);
+        });
+    }
+
+    if (calPrevMonth) {
+        calPrevMonth.addEventListener("click", () => {
+            calendarCurrentMonth--;
+            if (calendarCurrentMonth < 0) {
+                calendarCurrentMonth = 11;
+                calendarCurrentYear--;
+            }
+            renderMiniCalendar();
+        });
+    }
+
+    if (calNextMonth) {
+        calNextMonth.addEventListener("click", () => {
+            calendarCurrentMonth++;
+            if (calendarCurrentMonth > 11) {
+                calendarCurrentMonth = 0;
+                calendarCurrentYear++;
+            }
+            renderMiniCalendar();
+        });
     }
 }
 
-window.toggleTreeNode = function(element) {
-    const parentNode = element.parentElement;
-    parentNode.classList.toggle("expanded");
-    const icon = element.querySelector("i.fa-solid");
-    if (parentNode.classList.contains("expanded")) {
-        icon.className = "fa-solid fa-chevron-down";
-    } else {
-        icon.className = "fa-solid fa-chevron-right";
+function renderMiniCalendar() {
+    if (!miniCalendarGrid) return;
+    if (calMonthYearLabel) {
+        calMonthYearLabel.textContent = `${MONTH_NAMES_ES[calendarCurrentMonth]} ${calendarCurrentYear}`;
     }
-};
 
-// Toggle checkbox when clicking text next to it
-window.handleDayTextClick = function(element) {
-    const cb = element.querySelector(".tree-cb");
-    if (cb) {
-        cb.checked = !cb.checked;
-        // Trigger manual event dispatch for checkbox change
-        const event = new Event('change', { bubbles: true });
-        cb.dispatchEvent(event);
+    miniCalendarGrid.innerHTML = "";
+
+    const totalDays = new Date(calendarCurrentYear, calendarCurrentMonth + 1, 0).getDate();
+    const firstDay = new Date(calendarCurrentYear, calendarCurrentMonth, 1).getDay();
+    const startOffset = (firstDay + 6) % 7;
+
+    const prevMonthDays = new Date(calendarCurrentYear, calendarCurrentMonth, 0).getDate();
+    for (let i = startOffset - 1; i >= 0; i--) {
+        const cell = document.createElement("div");
+        cell.className = "cal-day-cell empty-day";
+        cell.innerHTML = `<span>${prevMonthDays - i}</span>`;
+        miniCalendarGrid.appendChild(cell);
     }
-};
 
-window.handleDayCheckboxChange = function(e) {
-    const checkbox = e.target;
-    const dateStr = checkbox.getAttribute("data-day");
-    const leafTitle = checkbox.closest(".tree-node-title.leaf");
-    
-    if (checkbox.checked) {
-        leafTitle.classList.add("selected");
-        if (!selectedTreeDays.includes(dateStr)) {
-            selectedTreeDays.push(dateStr);
+    for (let day = 1; day <= totalDays; day++) {
+        const dayStr = String(day).padStart(2, '0');
+        const monthStr = String(calendarCurrentMonth + 1).padStart(2, '0');
+        const dateStr = `${dayStr}/${monthStr}/${calendarCurrentYear}`;
+
+        const cell = document.createElement("div");
+        cell.className = "cal-day-cell";
+
+        const count = dateSurgeriesCountMap[dateStr] || 0;
+        const isSelected = selectedTreeDays.includes(dateStr);
+
+        if (count > 0) {
+            cell.classList.add("has-surgeries");
+        } else {
+            cell.classList.add("no-data");
         }
-    } else {
-        leafTitle.classList.remove("selected");
-        selectedTreeDays = selectedTreeDays.filter(d => d !== dateStr);
+
+        if (isSelected) {
+            cell.classList.add("selected");
+        }
+
+        let innerHTML = `<span>${day}</span>`;
+        if (count > 0) {
+            innerHTML += `<span class="cal-day-badge">${count}</span>`;
+        }
+        cell.innerHTML = innerHTML;
+
+        cell.addEventListener("click", () => {
+            if (!isMultiSelectMode) {
+                selectedTreeDays = [dateStr];
+                if (historyDirectDate) historyDirectDate.value = formatDateToISO(dateStr);
+            } else {
+                if (selectedTreeDays.includes(dateStr)) {
+                    selectedTreeDays = selectedTreeDays.filter(d => d !== dateStr);
+                } else {
+                    selectedTreeDays.push(dateStr);
+                }
+            }
+            renderMiniCalendar();
+            renderSelectedDaysSummary();
+            renderSelectedDays();
+        });
+
+        miniCalendarGrid.appendChild(cell);
     }
+}
+
+function renderSelectedDaysSummary() {
+    if (!selectedDaysPills || !selectedDaysCountBadge) return;
     
+    selectedDaysCountBadge.textContent = `${selectedTreeDays.length} ${selectedTreeDays.length === 1 ? 'Día' : 'Días'}`;
+    
+    if (selectedTreeDays.length === 0) {
+        selectedDaysPills.innerHTML = `<span style="font-size: 11px; color: var(--text-muted); font-style: italic;">Sin días seleccionados</span>`;
+        return;
+    }
+
+    const sortedDays = [...selectedTreeDays].sort(compareDateStrings);
+    selectedDaysPills.innerHTML = sortedDays.map(dateStr => {
+        const count = dateSurgeriesCountMap[dateStr] || 0;
+        return `
+            <span class="day-summary-pill">
+                <strong>${dateStr}</strong> (${count})
+                <button type="button" class="remove-pill-btn" onclick="removeSelectedDay('${dateStr}')" title="Quitar día">&times;</button>
+            </span>
+        `;
+    }).join("");
+}
+
+window.removeSelectedDay = function(dateStr) {
+    selectedTreeDays = selectedTreeDays.filter(d => d !== dateStr);
+    renderMiniCalendar();
+    renderSelectedDaysSummary();
     renderSelectedDays();
 };
 
@@ -581,26 +824,20 @@ function renderSelectedDays() {
     if (selectedTreeDays.length === 0) {
         historySelectionTitle.innerHTML = `<i class="fa-solid fa-calendar-xmark"></i> Sin Selección`;
         tableTotalBadge.textContent = "0 Cirugías";
-        historyTableBody.innerHTML = `<tr><td colspan="10" class="empty-table-message">Marque uno o varios días en el navegador temporal.</td></tr>`;
-        historyTimelineContainer.innerHTML = `<div class="empty-timeline-message">Marque uno o varios días en el navegador temporal para desplegar las cirugías.</div>`;
+        historyTableBody.innerHTML = `<tr><td colspan="10" class="empty-table-message">Seleccione uno o varios días en el selector de fechas.</td></tr>`;
+        historyTimelineContainer.innerHTML = `<div class="empty-timeline-message">Seleccione uno o varios días en el selector de fechas para desplegar las cirugías.</div>`;
         return;
     }
     
     // Sort selected days chronologically
-    selectedTreeDays.sort((a, b) => {
-        const da = a.split("/");
-        const db = b.split("/");
-        return new Date(da[2], da[1], da[0]) - new Date(db[2], db[1], db[0]);
-    });
+    selectedTreeDays.sort(compareDateStrings);
     
     // Gather all surgeries for selected days
     const allSelectedSurgeries = database.surgeries.filter(s => selectedTreeDays.includes(s.date));
     
     // Sort all surgeries
     allSelectedSurgeries.sort((a, b) => {
-        const da = a.date.split("/");
-        const db = b.date.split("/");
-        const dateDiff = new Date(da[2], da[1], da[0]) - new Date(db[2], db[1], db[0]);
+        const dateDiff = compareDateStrings(a.date, b.date);
         if (dateDiff !== 0) return dateDiff;
         return a.time_slot.localeCompare(b.time_slot);
     });
@@ -609,7 +846,7 @@ function renderSelectedDays() {
     if (selectedTreeDays.length === 1) {
         historySelectionTitle.innerHTML = `<i class="fa-solid fa-calendar-check"></i> Agenda del Día: <strong>${selectedTreeDays[0]}</strong>`;
     } else {
-        historySelectionTitle.innerHTML = `<i class="fa-solid fa-calendar-days"></i> Rango: <strong>${selectedTreeDays[0]}</strong> al <strong>${selectedTreeDays[selectedTreeDays.length - 1]}</strong>`;
+        historySelectionTitle.innerHTML = `<i class="fa-solid fa-calendar-days"></i> Rango: <strong>${selectedTreeDays[0]}</strong> al <strong>${selectedTreeDays[selectedTreeDays.length - 1]}</strong> (${selectedTreeDays.length} días)`;
     }
     
     const activeCount = allSelectedSurgeries.filter(s => !s.is_empty_slot).length;
@@ -733,12 +970,17 @@ function renderTimelineGrid(surgeries) {
                     </div>
             `;
             
-            if (isStandardShift) {
+            const assignedQx = slotSurgeries.filter(s => ["Q1", "Q2", "Q3"].includes(s.qx));
+            const unassignedQx = slotSurgeries.filter(s => !["Q1", "Q2", "Q3"].includes(s.qx));
+            
+            if (isStandardShift && assignedQx.length > 0) {
                 html += `<div class="timeline-grid-layout">`;
                 for (const qx of ["Q1", "Q2", "Q3"]) {
-                    const surg = slotSurgeries.find(s => s.qx === qx);
-                    if (surg) {
-                        html += renderQuirofanoCard(surg, qx);
+                    const qxSurgeries = assignedQx.filter(s => s.qx === qx);
+                    if (qxSurgeries.length > 0) {
+                        qxSurgeries.forEach(surg => {
+                            html += renderQuirofanoCard(surg, qx);
+                        });
                     } else {
                         html += `
                             <div class="quirofano-card empty">
@@ -747,6 +989,25 @@ function renderTimelineGrid(surgeries) {
                         `;
                     }
                 }
+                html += `</div>`;
+                
+                if (unassignedQx.length > 0) {
+                    html += `
+                        <div class="timeline-unassigned-header">
+                            <i class="fa-solid fa-circle-info"></i> Turnos adicionales en este bloque (${unassignedQx.length}):
+                        </div>
+                        <div class="timeline-grid-layout">
+                    `;
+                    unassignedQx.forEach(surg => {
+                        html += renderQuirofanoCard(surg, surg.qx || "Por Asignar");
+                    });
+                    html += `</div>`;
+                }
+            } else if (isStandardShift && assignedQx.length === 0) {
+                html += `<div class="timeline-grid-layout">`;
+                slotSurgeries.forEach(surg => {
+                    html += renderQuirofanoCard(surg, surg.qx || "Por Asignar");
+                });
                 html += `</div>`;
             } else {
                 html += `<div class="non-standard-list">`;

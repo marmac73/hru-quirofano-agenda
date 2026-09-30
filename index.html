@@ -143,11 +143,52 @@
             <!-- History Navigation Tab -->
             <section id="tab-history" class="tab-content">
                 <div class="history-grid">
-                    <div class="history-tree-card glass">
-                        <h3><i class="fa-solid fa-calendar-days"></i> Navegador Temporal</h3>
-                        <p class="history-tip"><i class="fa-solid fa-check-double"></i> Seleccione uno o varios días para ver y comparar agendas.</p>
-                        <div class="tree-container" id="history-tree">
-                            <!-- Hierarchical tree with checkboxes will be injected here -->
+                    <div class="history-picker-card glass">
+                        <div class="picker-header">
+                            <h3><i class="fa-solid fa-calendar-day"></i> Selector de Fecha</h3>
+                            <p class="history-tip">Seleccione una fecha puntual o navegue por el calendario mensual interactivo.</p>
+                        </div>
+                        
+                        <!-- Direct Date Picker & Stepper -->
+                        <div class="date-picker-control">
+                            <label for="history-direct-date" class="control-label"><i class="fa-regular fa-calendar"></i> Fecha directa:</label>
+                            <div class="date-input-group">
+                                <button id="btn-prev-day" class="date-nav-btn" type="button" title="Día Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+                                <input type="date" id="history-direct-date" class="date-input-field">
+                                <button id="btn-next-day" class="date-nav-btn" type="button" title="Día Siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+                            </div>
+                            
+                            <div class="quick-nav-pills">
+                                <button id="btn-quick-today" class="pill-btn" type="button"><i class="fa-solid fa-bolt"></i> Última Agenda</button>
+                                <button id="btn-quick-week" class="pill-btn" type="button"><i class="fa-solid fa-calendar-week"></i> Toda la Semana</button>
+                                <button id="btn-toggle-multi" class="pill-btn" type="button" title="Permite seleccionar múltiples días para comparar"><i class="fa-solid fa-layer-group"></i> Multi-día: <span id="multi-mode-state">OFF</span></button>
+                            </div>
+                        </div>
+                        
+                        <!-- Mini Interactive Monthly Calendar -->
+                        <div class="mini-calendar-wrapper">
+                            <div class="mini-calendar-nav">
+                                <button id="cal-prev-month" class="cal-nav-arrow" type="button" title="Mes Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+                                <span id="cal-month-year-label" class="cal-month-label">Septiembre 2026</span>
+                                <button id="cal-next-month" class="cal-nav-arrow" type="button" title="Mes Siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+                            </div>
+                            <div class="mini-calendar-weekdays">
+                                <span>Lu</span><span>Ma</span><span>Mi</span><span>Ju</span><span>Vi</span><span>Sá</span><span>Do</span>
+                            </div>
+                            <div class="mini-calendar-grid" id="mini-calendar-grid">
+                                <!-- Calendar days injected by JS -->
+                            </div>
+                        </div>
+
+                        <!-- Active Days Summary -->
+                        <div class="selection-summary-card">
+                            <div class="summary-line">
+                                <span style="font-size: 11.5px; font-weight: 600; color: var(--text-muted);">Días Seleccionados:</span>
+                                <span class="badge" id="selected-days-count-badge">1 Día</span>
+                            </div>
+                            <div class="summary-pills-list" id="selected-days-pills">
+                                <!-- Active selected day badges -->
+                            </div>
                         </div>
                     </div>
                     

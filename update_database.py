@@ -112,7 +112,29 @@ def normalize_qx(qx):
         return "Q2"
     if q in ["3", "Q3"]:
         return "Q3"
+    if q in ["4", "Q4"]:
+        return "Q4"
     return q
+
+def normalize_time_slot(slot):
+    s = slot.strip()
+    if s == "1":
+        return "08 a 10 hs"
+    if s == "2":
+        return "10 a 12 hs"
+    if s == "3":
+        return "12 a 14 hs"
+    if "08" in s and "10" in s:
+        return "08 a 10 hs"
+    if "10" in s and "12" in s:
+        return "10 a 12 hs"
+    if "12" in s and "14" in s:
+        return "12 a 14 hs"
+    if "LOCAL" in s.upper():
+        return "Locales"
+    if "ENDOSCOP" in s.upper():
+        return "Endoscopia"
+    return s
 
 def clean_day_name(day):
     d = day.strip()
@@ -130,6 +152,72 @@ def clean_day_name(day):
     if "vie" in d_lower:
         return "Viernes" + num_suffix
     return d
+
+def normalize_text(text):
+    if not text:
+        return ""
+    t = re.sub(r'\s+', ' ', str(text)).strip().upper()
+    replacements = (
+        ("Á", "A"), ("É", "E"), ("Í", "I"), ("Ó", "O"), ("Ú", "U"),
+        ("á", "A"), ("é", "E"), ("í", "I"), ("ó", "O"), ("ú", "U"),
+        ("Ñ", "N"), ("ñ", "N")
+    )
+    for a, b in replacements:
+        t = t.replace(a, b)
+    return t
+
+def normalize_dni(dni):
+    if not dni:
+        return ""
+    digits = re.sub(r'[^\d]', '', str(dni))
+    return digits if len(digits) >= 6 else ""
+
+def get_patient_key(r):
+    date_val = r.get('date', '').strip()
+    is_empty = r.get('is_empty_slot', False) or not r.get('patient', '').strip()
+    
+    if is_empty:
+        doc = normalize_text(r.get('doctor', ''))
+        spec = normalize_text(r.get('specialty', ''))
+        slot = normalize_text(r.get('time_slot', ''))
+        qx = normalize_text(r.get('qx', ''))
+        sheet_id = r.get('source_sheet_id', '')
+        return f"EMPTY|{date_val}|{slot}|{qx}|{doc}|{spec}|{sheet_id}"
+        
+    dni = normalize_dni(r.get('dni', ''))
+    patient_name = normalize_text(r.get('patient', ''))
+    
+    if dni:
+        return f"PATIENT_DNI|{date_val}|{dni}"
+    else:
+        doc = normalize_text(r.get('doctor', ''))
+        return f"PATIENT_NAME|{date_val}|{patient_name}|{doc}"
+
+def merge_records(existing, incoming):
+    merged = dict(existing)
+    
+    # Priority for qx: if incoming has QX and existing does not, take incoming
+    if not merged.get('qx') and incoming.get('qx'):
+        merged['qx'] = incoming['qx']
+        
+    # Priority for time_slot: standard time slots (e.g. "08 a 10 hs") preferred over numbers or unknown
+    if "a" in incoming.get('time_slot', '') and "a" not in merged.get('time_slot', ''):
+        merged['time_slot'] = incoming['time_slot']
+    elif not merged.get('time_slot') and incoming.get('time_slot'):
+        merged['time_slot'] = incoming['time_slot']
+        
+    # Fill in missing fields
+    for field in ['surgery', 'ailment', 'dni', 'phone', 'age', 'insurance', 'anesthesia', 'boxes', 'rx', 'status', 'doctor', 'specialty']:
+        val_exist = str(merged.get(field, '')).strip()
+        val_in = str(incoming.get(field, '')).strip()
+        if not val_exist and val_in:
+            merged[field] = incoming[field]
+        elif len(val_in) > len(val_exist) and field in ['surgery', 'ailment', 'boxes', 'status']:
+            merged[field] = incoming[field]
+            
+    merged['is_empty_slot'] = not bool(merged.get('patient', '').strip())
+    merged['hash'] = hashlib.sha256(get_patient_key(merged).encode('utf-8')).hexdigest()
+    return merged
 
 def fetch_html(folder_id):
     url = f"https://drive.google.com/drive/folders/{folder_id}"
@@ -298,6 +386,8 @@ def download_and_parse_sheet(sheet_id, name, folder_name):
                 current_time_slot = "Endoscopia"
             elif any(x in first_cell for x in ["08 a 10", "10 a 12", "12 a 14", "08 a 12"]):
                 current_time_slot = first_cell
+            elif first_cell in ["1", "2", "3"]:
+                current_time_slot = normalize_time_slot(first_cell)
             elif re.match(r'\d{1,2}/\d{1,2}/\d{4}', first_cell):
                 pass
             elif first_cell.upper() in ["LUNES", "MARTES", "MIÉRCOLES", "MIERCOLES", "JUEVES", "VIERNES"]:
@@ -345,10 +435,11 @@ def download_and_parse_sheet(sheet_id, name, folder_name):
         if not is_valid_specialty(specialty) and not doctor:
             continue
 
+        slot_norm = normalize_time_slot(current_time_slot)
         record = {
             'date': date_val,
             'day': clean_day_name(name.split(" ")[0]),
-            'time_slot': current_time_slot,
+            'time_slot': slot_norm,
             'qx': normalize_qx(row[1].strip() if len(row) > 1 else ""),
             'specialty': normalize_specialty(specialty),
             'doctor': normalize_doctor(doctor),
@@ -368,17 +459,11 @@ def download_and_parse_sheet(sheet_id, name, folder_name):
             'source_sheet_name': name,
             'source_folder_name': folder_name
         }
+        record['hash'] = hashlib.sha256(get_patient_key(record).encode('utf-8')).hexdigest()
         
         parsed_records.append(record)
         
     return parsed_records
-
-def get_record_hash(r):
-    # Unique signature for a scheduled surgery slot to prevent duplicates
-    # We combine date, time slot, doctor, patient, and surgery type
-    # If the slot is empty, we combine date, time slot, qx, and doctor
-    sig = f"{r['date']}|{r['time_slot']}|{r['qx']}|{r['specialty']}|{r['doctor']}|{r['patient']}|{r['surgery']}"
-    return hashlib.sha256(sig.encode('utf-8')).hexdigest()
 
 def main():
     print(f"Starting database sync from Google Drive Folder ID: {DRIVE_FOLDER_ID}")
@@ -407,27 +492,29 @@ def main():
         except Exception as e:
             print(f"Warning: Could not read existing database: {e}. Starting fresh.")
             
-    # Build dictionary of existing records mapped by hash
+    # Build dictionary of existing records mapped by patient identity key
     db_map = {}
     for r in existing_db.get('surgeries', []):
-        r_hash = r.get('hash') or get_record_hash(r)
-        r['hash'] = r_hash
-        db_map[r_hash] = r
+        pkey = get_patient_key(r)
+        if pkey not in db_map:
+            r['hash'] = hashlib.sha256(pkey.encode('utf-8')).hexdigest()
+            db_map[pkey] = r
+        else:
+            db_map[pkey] = merge_records(db_map[pkey], r)
         
-    # 4. Merge new records (Upsert)
+    # 4. Merge new records using patient identity key
     added_count = 0
     updated_count = 0
     
     for r in new_records:
-        r_hash = get_record_hash(r)
-        r['hash'] = r_hash
+        pkey = get_patient_key(r)
+        r['hash'] = hashlib.sha256(pkey.encode('utf-8')).hexdigest()
         
-        if r_hash not in db_map:
-            db_map[r_hash] = r
+        if pkey not in db_map:
+            db_map[pkey] = r
             added_count += 1
         else:
-            # Update fields in case they changed, keeping history intact
-            db_map[r_hash].update(r)
+            db_map[pkey] = merge_records(db_map[pkey], r)
             updated_count += 1
             
     # 5. Save database
@@ -465,7 +552,7 @@ def main():
     print(f"New surgeries added: {added_count}")
     print(f"Surgeries updated: {updated_count}")
     print(f"Saved to: {DATABASE_PATH}")
-    print("="*50)
+    print("="*50 + "\n")
 
 if __name__ == "__main__":
     main()
