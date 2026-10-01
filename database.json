@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-30T09:05:44.694829",
+  "last_updated": "2026-10-01T07:00:41.391125",
   "surgeries": [
     {
       "date": "08/06/2026",
@@ -11765,30 +11765,6 @@
       "date": "13/08/2026",
       "day": "Jueves",
       "time_slot": "10 a 12 hs",
-      "qx": "",
-      "specialty": "Traumatología y Ortopedia",
-      "doctor": "SIN ESPECIFICAR",
-      "patient": "",
-      "phone": "",
-      "age": "",
-      "dni": "",
-      "ailment": "",
-      "surgery": "",
-      "anesthesia": "",
-      "boxes": "",
-      "insurance": "PARTICULAR",
-      "rx": "",
-      "status": "",
-      "is_empty_slot": true,
-      "source_sheet_id": "1pukIfxHD8Gag_3Tr1RrkYaQIiXnHIZIg1MipxUgzt2Q",
-      "source_sheet_name": "Jueves 13/08/26",
-      "source_folder_name": "10 AL 14 DE AGOSTO",
-      "hash": "8f1b5cc875c314ca6d5182e3be1b5dba77b62ae0da13eccd7bec2d84de0cee0a"
-    },
-    {
-      "date": "13/08/2026",
-      "day": "Jueves",
-      "time_slot": "10 a 12 hs",
       "qx": "Q4",
       "specialty": "Cirugía General",
       "doctor": "Eiriz",
@@ -12221,30 +12197,6 @@
       "date": "18/08/2026",
       "day": "Martes",
       "time_slot": "08 a 10 hs",
-      "qx": "",
-      "specialty": "Traumatología y Ortopedia",
-      "doctor": "SIN ESPECIFICAR",
-      "patient": "",
-      "phone": "",
-      "age": "",
-      "dni": "",
-      "ailment": "",
-      "surgery": "",
-      "anesthesia": "",
-      "boxes": "",
-      "insurance": "PARTICULAR",
-      "rx": "",
-      "status": "",
-      "is_empty_slot": true,
-      "source_sheet_id": "1X40zRlTWIM7y7kJ5iGDTJFHAwfmuHgcUCeIe1xKM5zg",
-      "source_sheet_name": "Martes 18/08/26",
-      "source_folder_name": "17 AL 21 DE AGOSTO",
-      "hash": "b72a36d49c5f8103686b68b3ee33f39731025ba8fc10c3f4251b72968cd0c5fb"
-    },
-    {
-      "date": "18/08/2026",
-      "day": "Martes",
-      "time_slot": "08 a 10 hs",
       "qx": "Q4",
       "specialty": "Traumatología y Ortopedia",
       "doctor": "Galarza",
@@ -12340,30 +12292,6 @@
     {
       "date": "18/08/2026",
       "day": "Martes",
-      "time_slot": "12 a 14 hs",
-      "qx": "Q1",
-      "specialty": "Ginecología y Obstetricia",
-      "doctor": "Sasaki",
-      "patient": "JURADO NORMA",
-      "phone": "2901619681",
-      "age": "53",
-      "dni": "23.003.041",
-      "ailment": "PROLAPSO VEJIGA",
-      "surgery": "",
-      "anesthesia": "",
-      "boxes": "CONDICIONAL TEMA CAMAS",
-      "insurance": "UTHGRA (Hoteleros/Gastronómicos)",
-      "rx": "",
-      "status": "COMPLETA CAMBIAR FECHA PEDIDO",
-      "is_empty_slot": false,
-      "source_sheet_id": "1X40zRlTWIM7y7kJ5iGDTJFHAwfmuHgcUCeIe1xKM5zg",
-      "source_sheet_name": "Martes 18/08/26",
-      "source_folder_name": "17 AL 21 DE AGOSTO",
-      "hash": "157a9b11a6ffee48c60306651372ed794229e2b92d708900aab2d9e5dc7952e7"
-    },
-    {
-      "date": "18/08/2026",
-      "day": "Martes",
       "time_slot": "10 a 12 hs",
       "qx": "",
       "specialty": "Traumatología y Ortopedia",
@@ -12383,7 +12311,7 @@
       "source_sheet_id": "1X40zRlTWIM7y7kJ5iGDTJFHAwfmuHgcUCeIe1xKM5zg",
       "source_sheet_name": "Martes 18/08/26",
       "source_folder_name": "17 AL 21 DE AGOSTO",
-      "hash": "468f9e6f0ba020b102e58ca138e5a57f646a19fb5d180da37556e5f4feddd6c1"
+      "hash": "c142c84ecae743dc6c377f36598fbe2825f5b8ea2d6115f875ecc2a842f67201"
     },
     {
       "date": "18/08/2026",
@@ -12408,6 +12336,30 @@
       "source_sheet_name": "Martes 18/08/26",
       "source_folder_name": "17 AL 21 DE AGOSTO",
       "hash": "84748daa08be20b64195a0e6f04add8ada76c956f75f1a38eaa07a9fe224e8c8"
+    },
+    {
+      "date": "18/08/2026",
+      "day": "Martes",
+      "time_slot": "12 a 14 hs",
+      "qx": "Q1",
+      "specialty": "Ginecología y Obstetricia",
+      "doctor": "Sasaki",
+      "patient": "JURADO NORMA",
+      "phone": "2901619681",
+      "age": "53",
+      "dni": "23.003.041",
+      "ailment": "PROLAPSO VEJIGA",
+      "surgery": "",
+      "anesthesia": "",
+      "boxes": "CONDICIONAL TEMA CAMAS",
+      "insurance": "UTHGRA (Hoteleros/Gastronómicos)",
+      "rx": "",
+      "status": "COMPLETA CAMBIAR FECHA PEDIDO",
+      "is_empty_slot": false,
+      "source_sheet_id": "1X40zRlTWIM7y7kJ5iGDTJFHAwfmuHgcUCeIe1xKM5zg",
+      "source_sheet_name": "Martes 18/08/26",
+      "source_folder_name": "17 AL 21 DE AGOSTO",
+      "hash": "157a9b11a6ffee48c60306651372ed794229e2b92d708900aab2d9e5dc7952e7"
     },
     {
       "date": "19/08/2026",
@@ -12456,30 +12408,6 @@
       "source_sheet_name": "MiÃ©rcoles 19/08/26",
       "source_folder_name": "17 AL 21 DE AGOSTO",
       "hash": "fd5607e0a68429229b667a48af4d8456154a4e0d3285932cd16056dc3d08be2f"
-    },
-    {
-      "date": "19/08/2026",
-      "day": "Miércoles",
-      "time_slot": "08 a 10 hs",
-      "qx": "",
-      "specialty": "Cirugía Infantil",
-      "doctor": "SIN ESPECIFICAR",
-      "patient": "",
-      "phone": "",
-      "age": "",
-      "dni": "",
-      "ailment": "",
-      "surgery": "",
-      "anesthesia": "",
-      "boxes": "",
-      "insurance": "PARTICULAR",
-      "rx": "",
-      "status": "",
-      "is_empty_slot": true,
-      "source_sheet_id": "1mgBrh9MAKkjHRfMQWffPZQQarSqMEQp6cNLJW2IThfI",
-      "source_sheet_name": "MiÃ©rcoles 19/08/26",
-      "source_folder_name": "17 AL 21 DE AGOSTO",
-      "hash": "b3a2ee41270765bc284a7bbc0b570e668be76532643c94fcf5877a88cce7b713"
     },
     {
       "date": "19/08/2026",
@@ -12648,30 +12576,6 @@
       "source_sheet_name": "MiÃ©rcoles 19/08/26",
       "source_folder_name": "17 AL 21 DE AGOSTO",
       "hash": "a6d47d984558b07263eefc7e15ba61960807fcb010368c8c2348ac0d16a1c756"
-    },
-    {
-      "date": "19/08/2026",
-      "day": "Miércoles",
-      "time_slot": "10 a 12 hs",
-      "qx": "",
-      "specialty": "Cirugía Infantil",
-      "doctor": "SIN ESPECIFICAR",
-      "patient": "",
-      "phone": "",
-      "age": "",
-      "dni": "",
-      "ailment": "",
-      "surgery": "",
-      "anesthesia": "",
-      "boxes": "",
-      "insurance": "PARTICULAR",
-      "rx": "",
-      "status": "",
-      "is_empty_slot": true,
-      "source_sheet_id": "1mgBrh9MAKkjHRfMQWffPZQQarSqMEQp6cNLJW2IThfI",
-      "source_sheet_name": "MiÃ©rcoles 19/08/26",
-      "source_folder_name": "17 AL 21 DE AGOSTO",
-      "hash": "e450a8d274f118e7604505d979cb85236d0a451e1553a35adb090d1f0223d406"
     },
     {
       "date": "19/08/2026",
@@ -12863,7 +12767,7 @@
       "source_sheet_id": "107seOXBMDl6ogDhmu8LuvOkBryCpVyAvjz_k0FjRNn8",
       "source_sheet_name": "Jueves 20/08/26",
       "source_folder_name": "17 AL 21 DE AGOSTO",
-      "hash": "2230b939ea8ee7507563aeea72aad7c035a2b72727b18f08b98805f8d00d2440"
+      "hash": "9ad2a7534fa2832d71c669701b044ffee4dbb3ffadbb1cf05c088c2813b74df8"
     },
     {
       "date": "20/08/2026",
@@ -12935,7 +12839,7 @@
       "source_sheet_id": "107seOXBMDl6ogDhmu8LuvOkBryCpVyAvjz_k0FjRNn8",
       "source_sheet_name": "Jueves 20/08/26",
       "source_folder_name": "17 AL 21 DE AGOSTO",
-      "hash": "ce073ca63f8dc67caffc378b7b42ca54487c45a59681bc7102a4d7f58136eb5a"
+      "hash": "20d6786f18a4cc8cdecb938d1e7c8f0a5ba6d9d36f51146ad7ef8ae76da3982e"
     },
     {
       "date": "20/08/2026",
@@ -13559,7 +13463,7 @@
       "source_sheet_id": "1IK5ffN1Pxvc897Q7J4ooYpajeYk22Q4-cLeJb2Bav3A",
       "source_sheet_name": "Martes 25/08/26",
       "source_folder_name": "24 AL 28 DE AGOSTO",
-      "hash": "7086a74ffa6526622ad158e7258402e625552b534979b7feeb55f22ca5d4e82b"
+      "hash": "bd2a62bbec29a5706a4fcb866fefd3175f34910c37fc6674f95d0cba510d12fe"
     },
     {
       "date": "25/08/2026",
@@ -13631,7 +13535,7 @@
       "source_sheet_id": "1IK5ffN1Pxvc897Q7J4ooYpajeYk22Q4-cLeJb2Bav3A",
       "source_sheet_name": "Martes 25/08/26",
       "source_folder_name": "24 AL 28 DE AGOSTO",
-      "hash": "604386a6b2315418800fecf831bb62d36f154e4f83d7ad95ffb69bab67cc359d"
+      "hash": "f45434086e722a921cac99045c65ac1f8f236a454387a8aaac7d82375def30ef"
     },
     {
       "date": "25/08/2026",
@@ -13655,7 +13559,7 @@
       "source_sheet_id": "1IK5ffN1Pxvc897Q7J4ooYpajeYk22Q4-cLeJb2Bav3A",
       "source_sheet_name": "Martes 25/08/26",
       "source_folder_name": "24 AL 28 DE AGOSTO",
-      "hash": "e55188cc4fd01a17ed9eb05a4ffaf988161b7fbbf28b2477f2e0ed69cfd6ac8f"
+      "hash": "d62e8cf971d7b6cb011fab22f5e24c8b4b88a70755d385b44dd5208e2b69018b"
     },
     {
       "date": "25/08/2026",
@@ -13823,7 +13727,7 @@
       "source_sheet_id": "1rJ5DW_acjFUu3v4UwZeW0UMu-72gsxrpQtgMH6kE1vI",
       "source_sheet_name": "MiÃ©rcoles 26/08/26",
       "source_folder_name": "24 AL 28 DE AGOSTO",
-      "hash": "0ecdd534ce61651ed9274dcf752673dfee6ef198128068a45b5a179b0c3e9f92"
+      "hash": "31e9f19279a6488a2e70233d4858abe01cff74751a70d5587f28a1dc5712a17a"
     },
     {
       "date": "26/08/2026",
@@ -13895,7 +13799,7 @@
       "source_sheet_id": "1rJ5DW_acjFUu3v4UwZeW0UMu-72gsxrpQtgMH6kE1vI",
       "source_sheet_name": "MiÃ©rcoles 26/08/26",
       "source_folder_name": "24 AL 28 DE AGOSTO",
-      "hash": "a8c69af298c25079846204919c164c2f72cb9f059bf7addb7925d28760b74379"
+      "hash": "edce2f4064211b207f587fc257231d3bbfc063713dce99998a515f8abe431044"
     },
     {
       "date": "26/08/2026",
@@ -14135,7 +14039,7 @@
       "source_sheet_id": "1ra4huB7YrTIRaxPzFTbNy0xS7Sak67Cpzm-OuVWEXkw",
       "source_sheet_name": "Jueves 27/08/26",
       "source_folder_name": "24 AL 28 DE AGOSTO",
-      "hash": "3007da91ae7978648d48f7e76e81e0f1cdbc5a5b81b947f29bc3d1d480ea59df"
+      "hash": "09c1f6ae4379d73ee45c0f6825ee8be91b546c29efb179ba07b3214242013033"
     },
     {
       "date": "27/08/2026",
@@ -14207,7 +14111,7 @@
       "source_sheet_id": "1ra4huB7YrTIRaxPzFTbNy0xS7Sak67Cpzm-OuVWEXkw",
       "source_sheet_name": "Jueves 27/08/26",
       "source_folder_name": "24 AL 28 DE AGOSTO",
-      "hash": "bd2023bd31f4e40662db937bc65508f0c5043fddc1cc78a19fcb76ce35cba10f"
+      "hash": "ece7cdd9e08991c60726dff5d4a8fa2b7e80bfac6d21aa09e2af2e31ad53575d"
     },
     {
       "date": "27/08/2026",
@@ -14231,7 +14135,7 @@
       "source_sheet_id": "1ra4huB7YrTIRaxPzFTbNy0xS7Sak67Cpzm-OuVWEXkw",
       "source_sheet_name": "Jueves 27/08/26",
       "source_folder_name": "24 AL 28 DE AGOSTO",
-      "hash": "7f9dd0e2b3978bf5f4051e67728e77f88a4dc55ea9e7ef3ae0dad339c9972c31"
+      "hash": "ed4c775ba9889bb2b64bdd2ed323cff3479023595acd0bc0a76ce4ca0b3a903d"
     },
     {
       "date": "27/08/2026",
@@ -14663,7 +14567,7 @@
       "source_sheet_id": "1X6jkz2VQSTK719VWlQ5TMP-VZj6ifVZhzXJS2_chRY4",
       "source_sheet_name": "Lunes 31/08/26",
       "source_folder_name": "31 DE AGOSTO AL 04 DE SEPTIEMBRE",
-      "hash": "d9b9ffd29d51cf7131e3c4c5a69b3bad59a8cba953082936da8905d04ca89854"
+      "hash": "2d886790ece0c4aac00efaf8ad5b3927690320c601a4b071920ec4d2b005a905"
     },
     {
       "date": "31/08/2026",
@@ -14687,7 +14591,7 @@
       "source_sheet_id": "1X6jkz2VQSTK719VWlQ5TMP-VZj6ifVZhzXJS2_chRY4",
       "source_sheet_name": "Lunes 31/08/26",
       "source_folder_name": "31 DE AGOSTO AL 04 DE SEPTIEMBRE",
-      "hash": "32872813df726deadf0b86806177d37bf97a512970732b94c617a5fe58ea5b8b"
+      "hash": "9eea8738eef8356f06c14f6e28a82a08aa76a37d30768efefc979756746fe142"
     },
     {
       "date": "31/08/2026",
@@ -14759,7 +14663,7 @@
       "source_sheet_id": "1X6jkz2VQSTK719VWlQ5TMP-VZj6ifVZhzXJS2_chRY4",
       "source_sheet_name": "Lunes 31/08/26",
       "source_folder_name": "31 DE AGOSTO AL 04 DE SEPTIEMBRE",
-      "hash": "6e92ee9aacd227177e30c38a8ea80cbaadc1aa9efbf5a8d573957db0448a3b0e"
+      "hash": "5a08a1366539c50e5975584af798aae23b766a82bb9cdab71dc2f55c32cb0eb3"
     },
     {
       "date": "31/08/2026",
@@ -14783,7 +14687,7 @@
       "source_sheet_id": "1X6jkz2VQSTK719VWlQ5TMP-VZj6ifVZhzXJS2_chRY4",
       "source_sheet_name": "Lunes 31/08/26",
       "source_folder_name": "31 DE AGOSTO AL 04 DE SEPTIEMBRE",
-      "hash": "0bb97aa9ba63453f52e14a35d6a9d8bd5164fb5b0a8de176b531a658422c8127"
+      "hash": "0707aa03601db3dacab0b074d246f1bd75375972584d07e171957e7c6d5ffcd3"
     },
     {
       "date": "31/08/2026",
@@ -14975,7 +14879,7 @@
       "source_sheet_id": "1UO3emu6_Vwik6HJ7Ub9-K96zlIGyJZ5qzGn4krx01Ek",
       "source_sheet_name": "Martes 01/09/26",
       "source_folder_name": "31 DE AGOSTO AL 04 DE SEPTIEMBRE",
-      "hash": "9badbec365e15d1e2192b1f773edef62f8d305e48cc5cd4250a9bf47a42adb36"
+      "hash": "e1576b088a442ea216879dcace05b61483918ff0d17f86c91be0444ddc113c69"
     },
     {
       "date": "01/09/2026",
@@ -14999,7 +14903,7 @@
       "source_sheet_id": "1UO3emu6_Vwik6HJ7Ub9-K96zlIGyJZ5qzGn4krx01Ek",
       "source_sheet_name": "Martes 01/09/26",
       "source_folder_name": "31 DE AGOSTO AL 04 DE SEPTIEMBRE",
-      "hash": "78e01633234b19f76170f921e17999e8007a3f7c8e26415d2ebb3562c6e803d6"
+      "hash": "53f04e0e1531d88fd1b7ee997f148f85b8a46863c08ed0dae26b194ba6f1a4c6"
     },
     {
       "date": "01/09/2026",
@@ -15095,7 +14999,7 @@
       "source_sheet_id": "1UO3emu6_Vwik6HJ7Ub9-K96zlIGyJZ5qzGn4krx01Ek",
       "source_sheet_name": "Martes 01/09/26",
       "source_folder_name": "31 DE AGOSTO AL 04 DE SEPTIEMBRE",
-      "hash": "1efcd30fd4d2190a96c057276f412fa5f2e36b646ff41c5281e57beeaae4f800"
+      "hash": "78db67475d193a820d973fb40c18789d0b9e2c4b596c930fff5686c03511c8bf"
     },
     {
       "date": "01/09/2026",
@@ -15119,7 +15023,7 @@
       "source_sheet_id": "1UO3emu6_Vwik6HJ7Ub9-K96zlIGyJZ5qzGn4krx01Ek",
       "source_sheet_name": "Martes 01/09/26",
       "source_folder_name": "31 DE AGOSTO AL 04 DE SEPTIEMBRE",
-      "hash": "3979bb63de6bcb44f21af352cd80bad1452b9914f8a2405e08fe07fc41014100"
+      "hash": "b08ff58eb0c39a00b440593ebdef0371c4317589c8c35277e52657475ebd4b55"
     },
     {
       "date": "01/09/2026",
@@ -15431,7 +15335,7 @@
       "source_sheet_id": "1O53ufxpN97G9Z0rPa4xod4TIpLUo52KcR6AhquHDRHI",
       "source_sheet_name": "Jueves 03/09/26",
       "source_folder_name": "31 DE AGOSTO AL 04 DE SEPTIEMBRE",
-      "hash": "d1fb644fdb2c1e709b2fccd9f610961ed20e68942195bde6dfac6f4ba1035d62"
+      "hash": "c5378ea5089a69e677ff4628d4269c2a9549599e7837008457406a0648b482cc"
     },
     {
       "date": "03/09/2026",
@@ -15503,7 +15407,7 @@
       "source_sheet_id": "1O53ufxpN97G9Z0rPa4xod4TIpLUo52KcR6AhquHDRHI",
       "source_sheet_name": "Jueves 03/09/26",
       "source_folder_name": "31 DE AGOSTO AL 04 DE SEPTIEMBRE",
-      "hash": "0e7f9067f3c47d80452cb56cd4b582f81537b8f3ce71e84657b7421124041795"
+      "hash": "112920d9913771c9fa92ecbcf9abab35e180709a1931d50a43f6b0e7a7868de0"
     },
     {
       "date": "03/09/2026",
@@ -15575,7 +15479,7 @@
       "source_sheet_id": "11xv8SH1Ks2U-6c0q-aGHtlYnlAnM7qxGMH4MEbKOKRc",
       "source_sheet_name": "Viernes 04/09/26",
       "source_folder_name": "31 DE AGOSTO AL 04 DE SEPTIEMBRE",
-      "hash": "a9a12acb3ee9a527501499011cb392272d0580d83ec46e52feb8772c51b356b4"
+      "hash": "73c5fc9fa2bdf9021533a51539bf21e47d570f0b77005c9a74bfd4a8842fc4e0"
     },
     {
       "date": "04/09/2026",
@@ -15599,7 +15503,7 @@
       "source_sheet_id": "11xv8SH1Ks2U-6c0q-aGHtlYnlAnM7qxGMH4MEbKOKRc",
       "source_sheet_name": "Viernes 04/09/26",
       "source_folder_name": "31 DE AGOSTO AL 04 DE SEPTIEMBRE",
-      "hash": "9289b4b28a102dc138c0ec3044b93794600413daa7335db253efb1df1c17baeb"
+      "hash": "e7a749d0e2c6e7f7519d36b269047fd66709e770000ce60ca6175ba72b77bf50"
     },
     {
       "date": "04/09/2026",
@@ -15671,7 +15575,7 @@
       "source_sheet_id": "11xv8SH1Ks2U-6c0q-aGHtlYnlAnM7qxGMH4MEbKOKRc",
       "source_sheet_name": "Viernes 04/09/26",
       "source_folder_name": "31 DE AGOSTO AL 04 DE SEPTIEMBRE",
-      "hash": "53bc5a768526b51ee91f5d512835e6102503ae9b7cc360f60c2c74fe65455ece"
+      "hash": "f5ad7d747218514fb0d43efa1ac2f1369d08a32e32e2cc503d5434ba871a49bd"
     },
     {
       "date": "04/09/2026",
@@ -15911,7 +15815,7 @@
       "source_sheet_id": "1ugvtStAm-dWr1OJIy8HVrEJSaKA7HyJsWjcmYJ5Q-aM",
       "source_sheet_name": "Lunes 07/09/26",
       "source_folder_name": "07 AL 11 DE SEPTIEMBRE",
-      "hash": "92b7d8aa9beb876b3be1b4f86b1d44e4ac942fbdfdfd3ace22b8ba8c26ea846f"
+      "hash": "687a5e3378c6c50ec4d049b795d452e9e2deebde37b8454f822b10f331805492"
     },
     {
       "date": "07/09/2026",
@@ -15935,7 +15839,7 @@
       "source_sheet_id": "1ugvtStAm-dWr1OJIy8HVrEJSaKA7HyJsWjcmYJ5Q-aM",
       "source_sheet_name": "Lunes 07/09/26",
       "source_folder_name": "07 AL 11 DE SEPTIEMBRE",
-      "hash": "0d38d2d05e2e0658ba80fe0f6edf6235d2cc29c5efeaca186ddd92e19f5b883b"
+      "hash": "de846263395d717ff96a9189ff89b590e83142df7b7c5633dad6736302c5a27f"
     },
     {
       "date": "07/09/2026",
@@ -16055,7 +15959,7 @@
       "source_sheet_id": "1ugvtStAm-dWr1OJIy8HVrEJSaKA7HyJsWjcmYJ5Q-aM",
       "source_sheet_name": "Lunes 07/09/26",
       "source_folder_name": "07 AL 11 DE SEPTIEMBRE",
-      "hash": "df2c8d7663662c8ef7ecb0c15236c732412d2ba437875de04690846b2c21c50a"
+      "hash": "814f2d8861eb4d24494f6a38247eb525494a4f6649904f32ecbe3bd4e04dfb02"
     },
     {
       "date": "07/09/2026",
@@ -16079,7 +15983,7 @@
       "source_sheet_id": "1ugvtStAm-dWr1OJIy8HVrEJSaKA7HyJsWjcmYJ5Q-aM",
       "source_sheet_name": "Lunes 07/09/26",
       "source_folder_name": "07 AL 11 DE SEPTIEMBRE",
-      "hash": "d45adb30e9c2c816b25a6932cb805050cac33f8d767fa58ca1c64569c40757cb"
+      "hash": "72ea1e05980d71b3953387471dbd42f22fdb644d0611ecfaf468e1cfb6fdb0ac"
     },
     {
       "date": "07/09/2026",
@@ -16271,7 +16175,7 @@
       "source_sheet_id": "1zxCLPcpWvENMaaSP56PTxXa-4ntt7b7kHvpq9_BvYE4",
       "source_sheet_name": "Martes 08/09/26",
       "source_folder_name": "07 AL 11 DE SEPTIEMBRE",
-      "hash": "bcbc32fc631989e03dc126a47c63174c1299aaa626b6183f6fc18032df503692"
+      "hash": "6fe0e040992af855e89829591346ac5233955288dff33232e717f5cad6e98082"
     },
     {
       "date": "08/09/2026",
@@ -16295,7 +16199,7 @@
       "source_sheet_id": "1zxCLPcpWvENMaaSP56PTxXa-4ntt7b7kHvpq9_BvYE4",
       "source_sheet_name": "Martes 08/09/26",
       "source_folder_name": "07 AL 11 DE SEPTIEMBRE",
-      "hash": "75913ddbebf9599f87bd2143c7b05832301b7932a7a5e6c7ce74e10dd51816b4"
+      "hash": "2d0a48bd9d5979d05a2f6f7633ad115d494e4ef84c7c210ed64fe38bef449eb5"
     },
     {
       "date": "08/09/2026",
@@ -16391,7 +16295,7 @@
       "source_sheet_id": "1zxCLPcpWvENMaaSP56PTxXa-4ntt7b7kHvpq9_BvYE4",
       "source_sheet_name": "Martes 08/09/26",
       "source_folder_name": "07 AL 11 DE SEPTIEMBRE",
-      "hash": "208dc121c6dbf8a26ec59e0ea4e9527d0dbc2786c3702f1db73e13efd261d516"
+      "hash": "fd6beb191ba7693e1f67a8df86e881117659c875da963da08058c582ff9282f6"
     },
     {
       "date": "08/09/2026",
@@ -16415,7 +16319,7 @@
       "source_sheet_id": "1zxCLPcpWvENMaaSP56PTxXa-4ntt7b7kHvpq9_BvYE4",
       "source_sheet_name": "Martes 08/09/26",
       "source_folder_name": "07 AL 11 DE SEPTIEMBRE",
-      "hash": "6df649b3d8581187ca7738d26014206830ddffef2da7e352aad19332700061fc"
+      "hash": "93c15c2ac69c2110d5d3c739f4366af4850df8d9c8d706a21928bc33827fb66d"
     },
     {
       "date": "08/09/2026",
@@ -16583,7 +16487,7 @@
       "source_sheet_id": "1JVkD2eRf2Z2IXm3Tu5kHOkaZdykJ0-J3HYFajyQoAGU",
       "source_sheet_name": "MiÃ©rcoles 09/09/26",
       "source_folder_name": "07 AL 11 DE SEPTIEMBRE",
-      "hash": "fc7d2bb9ebf6c624644329a7f2d1c8f6ae2efe71a678329e594206c6809b2e26"
+      "hash": "f3b94f7a1ebb1c78e3bbe3a1ded8ef9911c6680e0f56b0405812b9838ae6d00b"
     },
     {
       "date": "09/09/2026",
@@ -16607,7 +16511,7 @@
       "source_sheet_id": "1JVkD2eRf2Z2IXm3Tu5kHOkaZdykJ0-J3HYFajyQoAGU",
       "source_sheet_name": "MiÃ©rcoles 09/09/26",
       "source_folder_name": "07 AL 11 DE SEPTIEMBRE",
-      "hash": "04cc8b44e0502189d4a58ced96e9067ceb50926025f908ae2d49ced15fdc731f"
+      "hash": "fb1684e5eeeb15790fa951093756f1d721f36ae2d3778bb23f48b61c797d5010"
     },
     {
       "date": "09/09/2026",
@@ -16751,7 +16655,7 @@
       "source_sheet_id": "1JVkD2eRf2Z2IXm3Tu5kHOkaZdykJ0-J3HYFajyQoAGU",
       "source_sheet_name": "MiÃ©rcoles 09/09/26",
       "source_folder_name": "07 AL 11 DE SEPTIEMBRE",
-      "hash": "f1a4cf9e3eec4f8fb57d426f029d2d681ef77865fa724768a9cf640a904fe9cc"
+      "hash": "a5736de813aece9581762b808e46533f304838d02add3aa48ae75c3f70bca125"
     },
     {
       "date": "09/09/2026",
@@ -16775,7 +16679,7 @@
       "source_sheet_id": "1JVkD2eRf2Z2IXm3Tu5kHOkaZdykJ0-J3HYFajyQoAGU",
       "source_sheet_name": "MiÃ©rcoles 09/09/26",
       "source_folder_name": "07 AL 11 DE SEPTIEMBRE",
-      "hash": "e5e28c56d99ca3cdaef9c2fccaa9284786455ee6d7bd3f9d4e928e7b0a2c8689"
+      "hash": "b24ab622530e68dcba84493c1c8a742ae492f35c71de905edb2c46f532116204"
     },
     {
       "date": "09/09/2026",
@@ -17183,7 +17087,7 @@
       "source_sheet_id": "1BfDmtrbCg-7y4a0pmB0VFX2ANlBkUxOdnjaxaNYqIvA",
       "source_sheet_name": "Viernes 11/09/26",
       "source_folder_name": "07 AL 11 DE SEPTIEMBRE",
-      "hash": "d0fd3693961ce107f9df905a009d4846ccba2c2b989f158306bfe917be8ecace"
+      "hash": "ea7034d56af9d6c38bfd0381eb2331c23d59c150cfb18c94bbb4fd98df441edd"
     },
     {
       "date": "11/09/2026",
@@ -17207,7 +17111,7 @@
       "source_sheet_id": "1BfDmtrbCg-7y4a0pmB0VFX2ANlBkUxOdnjaxaNYqIvA",
       "source_sheet_name": "Viernes 11/09/26",
       "source_folder_name": "07 AL 11 DE SEPTIEMBRE",
-      "hash": "b226da39be878c9ac567f7bc9fdcd4feb81b0459c79363ca97dac7d237249111"
+      "hash": "2e9c7e35ad937529700bbd37f9d89fedf1e06e9efb24ccd3dbb87fabc0cca336"
     },
     {
       "date": "11/09/2026",
@@ -17375,7 +17279,7 @@
       "source_sheet_id": "1BfDmtrbCg-7y4a0pmB0VFX2ANlBkUxOdnjaxaNYqIvA",
       "source_sheet_name": "Viernes 11/09/26",
       "source_folder_name": "07 AL 11 DE SEPTIEMBRE",
-      "hash": "acc8a8bcfc7f42232e15109af0bc8da874d757b8bac36f8bccf304a952064dfd"
+      "hash": "55885aafb60243fe3cbc720344f7269b69e2ae51abbc0759d8abeab60e2d1c8c"
     },
     {
       "date": "11/09/2026",
@@ -17711,7 +17615,7 @@
       "source_sheet_id": "1QuNME6m7VYNYBGHrqKmPwnnD0AcpznPEkURk_h_E2dc",
       "source_sheet_name": "Lunes 14/09/26",
       "source_folder_name": "14 AL 18 DE SEPTIEMBRE",
-      "hash": "9841dd4a2a47eec52b07ce312fd6c9e3fde97d1bad020c82c30e136e0edd9f7b"
+      "hash": "229357dc64c563b776b746a8c89ec0397bd1d1565e051def43bbedfe32e04182"
     },
     {
       "date": "14/09/2026",
@@ -17735,7 +17639,7 @@
       "source_sheet_id": "1QuNME6m7VYNYBGHrqKmPwnnD0AcpznPEkURk_h_E2dc",
       "source_sheet_name": "Lunes 14/09/26",
       "source_folder_name": "14 AL 18 DE SEPTIEMBRE",
-      "hash": "541f034d368a828bbd658fb1fa2801ff47b83beaf046a80fd7ed8a5b34dd8760"
+      "hash": "c0a8ebc9d0ff35a1031b1243a7c536b71d39ed137bcfba1e3df0d8f1f9e19f9a"
     },
     {
       "date": "14/09/2026",
@@ -17879,7 +17783,7 @@
       "source_sheet_id": "1QuNME6m7VYNYBGHrqKmPwnnD0AcpznPEkURk_h_E2dc",
       "source_sheet_name": "Lunes 14/09/26",
       "source_folder_name": "14 AL 18 DE SEPTIEMBRE",
-      "hash": "15cd7ce72e9ae14f9aae598da0b518008948e11c60b55033a6f06975b68a8e5e"
+      "hash": "a807731fb3873adb109c64cc65cab9f401f5c689d0828b2ed31310af480c2fc5"
     },
     {
       "date": "14/09/2026",
@@ -17903,7 +17807,7 @@
       "source_sheet_id": "1QuNME6m7VYNYBGHrqKmPwnnD0AcpznPEkURk_h_E2dc",
       "source_sheet_name": "Lunes 14/09/26",
       "source_folder_name": "14 AL 18 DE SEPTIEMBRE",
-      "hash": "725688593905372a4d9a7bfb89c29d93373e7da5e0ded3b75937e75b246574e2"
+      "hash": "d86c83a1b586b1ce53b6c411dc653ec187108ed391b88c4b97b49d04d3dc5ee1"
     },
     {
       "date": "14/09/2026",
@@ -18239,7 +18143,7 @@
       "source_sheet_id": "1bV5hpV9wU7VnnKwfx0Sh7UULs_f_xvPQHdIjo9pFy0s",
       "source_sheet_name": "Martes 15/09/26",
       "source_folder_name": "14 AL 18 DE SEPTIEMBRE",
-      "hash": "14029a730335f9e666e37f4637e708a52b461d1f6d8bb093c7227e569915575b"
+      "hash": "2f34d0b9769e8e678742e7f18582d9fd8479267c76170dbc592410aa6f47c917"
     },
     {
       "date": "15/09/2026",
@@ -18335,7 +18239,7 @@
       "source_sheet_id": "1bV5hpV9wU7VnnKwfx0Sh7UULs_f_xvPQHdIjo9pFy0s",
       "source_sheet_name": "Martes 15/09/26",
       "source_folder_name": "14 AL 18 DE SEPTIEMBRE",
-      "hash": "cada2eb4aac98876ef9837390b119d2e514baf8c36266f31fd31e8dd8ad12341"
+      "hash": "fff68468345096e9469635c448647c7d6b0264ccd9177c185284bba91f37f754"
     },
     {
       "date": "15/09/2026",
@@ -18383,7 +18287,7 @@
       "source_sheet_id": "1jNfeC36kjZ0lz4DgDdBRK36qymFp4N8fDnLh3mgV3yY",
       "source_sheet_name": "MiÃ©rcoles 16/09/26",
       "source_folder_name": "14 AL 18 DE SEPTIEMBRE",
-      "hash": "be2b4a2b22457f66d96f321f96d3891df816a47e3cd7fb8dd226a1657443d699"
+      "hash": "10ee507a8c2601e5d1a2db696b403b07966c9243adc542a04da4b56abdc4432c"
     },
     {
       "date": "16/09/2026",
@@ -18503,7 +18407,7 @@
       "source_sheet_id": "1jNfeC36kjZ0lz4DgDdBRK36qymFp4N8fDnLh3mgV3yY",
       "source_sheet_name": "MiÃ©rcoles 16/09/26",
       "source_folder_name": "14 AL 18 DE SEPTIEMBRE",
-      "hash": "a751532e7ea6ce7f61b7dfb756d952d663043db6ac391d1cd5e2d3da07be5699"
+      "hash": "af994784242cef19a4be441cbb39323bb865a4a1680903634d28192362582170"
     },
     {
       "date": "16/09/2026",
@@ -18527,7 +18431,7 @@
       "source_sheet_id": "1jNfeC36kjZ0lz4DgDdBRK36qymFp4N8fDnLh3mgV3yY",
       "source_sheet_name": "MiÃ©rcoles 16/09/26",
       "source_folder_name": "14 AL 18 DE SEPTIEMBRE",
-      "hash": "fa281a1d4f1d4bb3ee07457b6b37837915caed9e797606f66cb7b6b695fad663"
+      "hash": "38be3ff2d07e669b58946594882d8cb727a9104f0ce93d3106cfb4c12c6f05b3"
     },
     {
       "date": "16/09/2026",
@@ -18815,7 +18719,7 @@
       "source_sheet_id": "1wIVnJiAeUIZkLoT9PPZFBqnSwPyJhbrIiusNsJ2oOBw",
       "source_sheet_name": "Jueves 17/09/26",
       "source_folder_name": "14 AL 18 DE SEPTIEMBRE",
-      "hash": "25358159f1a7620778abdd591e4674c19082363accd41d44b84a7e7b794f4553"
+      "hash": "b5e773426e95da9f3793b6e9af03e9d895c3fad88b201a07f273742d88c954de"
     },
     {
       "date": "17/09/2026",
@@ -18983,7 +18887,7 @@
       "source_sheet_id": "1wIVnJiAeUIZkLoT9PPZFBqnSwPyJhbrIiusNsJ2oOBw",
       "source_sheet_name": "Jueves 17/09/26",
       "source_folder_name": "14 AL 18 DE SEPTIEMBRE",
-      "hash": "5121ef9964e6a2897d015004aa6c66083156b11e9eda1cd7ff25b089a956a41c"
+      "hash": "2b0a9d0a09255248ec4e6931c2d7e4edc0b00d7c6d82c515f9bfee8a6d73d5c4"
     },
     {
       "date": "17/09/2026",
@@ -19151,7 +19055,7 @@
       "source_sheet_id": "1a2VYhwP4ZomnRzzJjUiu-0efPrwpA610nUR4lIMkjek",
       "source_sheet_name": "Viernes 18/09/26",
       "source_folder_name": "14 AL 18 DE SEPTIEMBRE",
-      "hash": "2b346702cd68842d9558ef5ab6a054e051315475bca353df9ea1dd0d6cce1ed5"
+      "hash": "ec94f0f93dff78b23680b4028c9af30023f4ed764f779ef90425350ed5c3fad2"
     },
     {
       "date": "18/09/2026",
@@ -19175,7 +19079,7 @@
       "source_sheet_id": "1a2VYhwP4ZomnRzzJjUiu-0efPrwpA610nUR4lIMkjek",
       "source_sheet_name": "Viernes 18/09/26",
       "source_folder_name": "14 AL 18 DE SEPTIEMBRE",
-      "hash": "eced512c552ba068003a9923b6870fca9fc946e295361284c5c9d1d23d47ca71"
+      "hash": "34bd22cbdceed7e5545a3b9b5d666ff1af864ec60ddd0127a5f12798c2ac1384"
     },
     {
       "date": "18/09/2026",
@@ -19295,7 +19199,7 @@
       "source_sheet_id": "1a2VYhwP4ZomnRzzJjUiu-0efPrwpA610nUR4lIMkjek",
       "source_sheet_name": "Viernes 18/09/26",
       "source_folder_name": "14 AL 18 DE SEPTIEMBRE",
-      "hash": "e50e7348b70252a1e9832be619067a7e64e3ded0ba16632a7a1e6afad09ce840"
+      "hash": "cf5388018a0fc5a72cb1fd608d06e416ca1103003f11e2abe79ac76bcd6d9136"
     },
     {
       "date": "18/09/2026",
@@ -19319,7 +19223,7 @@
       "source_sheet_id": "1a2VYhwP4ZomnRzzJjUiu-0efPrwpA610nUR4lIMkjek",
       "source_sheet_name": "Viernes 18/09/26",
       "source_folder_name": "14 AL 18 DE SEPTIEMBRE",
-      "hash": "8a1a83edb53a2747bbaa73de37a2732bc6ea95a95b872947928aed45e953f31e"
+      "hash": "44238236d42d182356f71ac640366739bda1cfee80f6073e2f6209632f9e6123"
     },
     {
       "date": "18/09/2026",
@@ -19463,7 +19367,7 @@
       "source_sheet_id": "1YqyPDHEZ2Wh9FdGqy_sC49Rr7i_1h_aJH2DIE2X65Lg",
       "source_sheet_name": "Martes 22/09/26",
       "source_folder_name": "22 AL 25 DE SEPTIEMBRE",
-      "hash": "0f293e5e427274c7cc8440b8308fb2f1a8e6537683c90df2093f9530367a81c5"
+      "hash": "9416e43e8d36a75953756114a126b7641deb61bb26638351621ea718ba6aaea5"
     },
     {
       "date": "22/09/2026",
@@ -19511,7 +19415,7 @@
       "source_sheet_id": "1YqyPDHEZ2Wh9FdGqy_sC49Rr7i_1h_aJH2DIE2X65Lg",
       "source_sheet_name": "Martes 22/09/26",
       "source_folder_name": "22 AL 25 DE SEPTIEMBRE",
-      "hash": "7c2c771533089018cc5e02d4b31704636fb95cc21772286268ac8909126ac9e4"
+      "hash": "5fd66f25f5fa76cc2a6d4ff23e9f55d26eff35fc8cc8de13c0f8e47af30b2e76"
     },
     {
       "date": "22/09/2026",
@@ -19535,7 +19439,7 @@
       "source_sheet_id": "1YqyPDHEZ2Wh9FdGqy_sC49Rr7i_1h_aJH2DIE2X65Lg",
       "source_sheet_name": "Martes 22/09/26",
       "source_folder_name": "22 AL 25 DE SEPTIEMBRE",
-      "hash": "4475da6b2a4e540e5067c4173eb50567a2ee51c87dd488867abb7a32655787a4"
+      "hash": "950771a4e7f76a332c7a1bb90fe13464ad776cbea3ba58af5d5dba37f4c5cd78"
     },
     {
       "date": "22/09/2026",
@@ -20908,6 +20812,30 @@
     {
       "date": "29/09/2026",
       "day": "Martes",
+      "time_slot": "10 a 12 hs",
+      "qx": "",
+      "specialty": "Oyt",
+      "doctor": "Gomez",
+      "patient": "GRANDIS AIXA",
+      "phone": "2901472802",
+      "age": "29",
+      "dni": "39.392.051",
+      "ailment": "RUPTURA LCA",
+      "surgery": "ARTROSCOPIA  DE R I",
+      "anesthesia": "SI",
+      "boxes": "",
+      "insurance": "Medife",
+      "rx": "NO",
+      "status": "NO PASO HACER TRAMITE",
+      "is_empty_slot": false,
+      "source_sheet_id": "1nMdBqJKI4Y9YCN48IChpgcMWkAqUv53F3vK2uevqmug",
+      "source_sheet_name": "Martes 29/09/26",
+      "source_folder_name": "28 DE SEPTIEMBRE AL 02 DE OCTUBRE",
+      "hash": "ac56d62431824a6746b704cd595a990313dd98b0a34a9b1598b2a73a79eb17b3"
+    },
+    {
+      "date": "29/09/2026",
+      "day": "Martes",
       "time_slot": "12 a 14 hs",
       "qx": "",
       "specialty": "Ginecología y Obstetricia",
@@ -21000,30 +20928,6 @@
       "source_sheet_name": "Martes 29/09/26",
       "source_folder_name": "28 DE SEPTIEMBRE AL 02 DE OCTUBRE",
       "hash": "099404c2d0857480dd610d3d242512b7b82dec1361f8b104e2c039ca95932e5a"
-    },
-    {
-      "date": "29/09/2026",
-      "day": "Martes",
-      "time_slot": "10 a 12 hs",
-      "qx": "",
-      "specialty": "Oyt",
-      "doctor": "Gomez",
-      "patient": "GRANDIS AIXA",
-      "phone": "2901472802",
-      "age": "29",
-      "dni": "39.392.051",
-      "ailment": "RUPTURA LCA",
-      "surgery": "ARTROSCOPIA  DE R I",
-      "anesthesia": "SI",
-      "boxes": "",
-      "insurance": "Medife",
-      "rx": "NO",
-      "status": "NO PASO HACER TRAMITE",
-      "is_empty_slot": false,
-      "source_sheet_id": "1nMdBqJKI4Y9YCN48IChpgcMWkAqUv53F3vK2uevqmug",
-      "source_sheet_name": "Martes 29/09/26",
-      "source_folder_name": "28 DE SEPTIEMBRE AL 02 DE OCTUBRE",
-      "hash": "ac56d62431824a6746b704cd595a990313dd98b0a34a9b1598b2a73a79eb17b3"
     },
     {
       "date": "30/09/2026",
@@ -21293,7 +21197,7 @@
       "date": "01/10/2026",
       "day": "Jueves",
       "time_slot": "08 a 10 hs",
-      "qx": "",
+      "qx": "Q1",
       "specialty": "Ginecología y Obstetricia",
       "doctor": "SIN ESPECIFICAR",
       "patient": "RODRIGUEZ MARIA",
@@ -21301,8 +21205,8 @@
       "age": "39",
       "dni": "32.695.701",
       "ailment": "",
-      "surgery": "",
-      "anesthesia": "",
+      "surgery": "LT VL",
+      "anesthesia": "SI",
       "boxes": "",
       "insurance": "PARTICULAR",
       "rx": "",
@@ -21317,7 +21221,7 @@
       "date": "01/10/2026",
       "day": "Jueves",
       "time_slot": "08 a 10 hs",
-      "qx": "",
+      "qx": "Q2",
       "specialty": "Ginecología y Obstetricia",
       "doctor": "Cueto",
       "patient": "BALCAZAR CELIBEL",
@@ -21326,7 +21230,7 @@
       "dni": "94.072.011",
       "ailment": "BLASTOMA DE OVARIO DER",
       "surgery": "VL EXPLORADORA",
-      "anesthesia": "",
+      "anesthesia": "SI",
       "boxes": "",
       "insurance": "SUMAR (Salud Pública)",
       "rx": "",
@@ -21341,7 +21245,7 @@
       "date": "01/10/2026",
       "day": "Jueves",
       "time_slot": "10 a 12 hs",
-      "qx": "",
+      "qx": "Q3",
       "specialty": "Traumatología y Ortopedia",
       "doctor": "SIN ESPECIFICAR",
       "patient": "STRACK ESTEBAN",
@@ -21350,7 +21254,7 @@
       "dni": "34.791.551",
       "ailment": "FX 5 MTC",
       "surgery": "",
-      "anesthesia": "",
+      "anesthesia": "SI",
       "boxes": "",
       "insurance": "OSEF (Provincial Fueguino)",
       "rx": "",
@@ -21365,7 +21269,7 @@
       "date": "01/10/2026",
       "day": "Jueves",
       "time_slot": "10 a 12 hs",
-      "qx": "",
+      "qx": "Q3",
       "specialty": "Traumatología y Ortopedia",
       "doctor": "Montenegro",
       "patient": "QUICHO MAMANI MARTA",
@@ -21407,7 +21311,31 @@
       "source_sheet_id": "1vY-Il62W7kEeVdwt5zlySGC92YPcAMxKh63un6ZokhM",
       "source_sheet_name": "Jueves 01/10/26",
       "source_folder_name": "28 DE SEPTIEMBRE AL 02 DE OCTUBRE",
-      "hash": "924f2e6f618588d12c2ef9ac2eb5a8eb5f80f171dcf261973dcc692aae699212"
+      "hash": "c24a98a276314ec6404a0dc3381bc02fccb656a83da3ef17d186936db022289b"
+    },
+    {
+      "date": "01/10/2026",
+      "day": "Jueves",
+      "time_slot": "10 a 12 hs",
+      "qx": "Q4",
+      "specialty": "Traumatología y Ortopedia",
+      "doctor": "Gomez",
+      "patient": "MULLION PEDRO ANDRES",
+      "phone": "608634",
+      "age": "49",
+      "dni": "25.341.490",
+      "ailment": "",
+      "surgery": "ligamento cruzado",
+      "anesthesia": "SI",
+      "boxes": "",
+      "insurance": "OSEF (Provincial Fueguino)",
+      "rx": "",
+      "status": "COMPLETA",
+      "is_empty_slot": false,
+      "source_sheet_id": "1vY-Il62W7kEeVdwt5zlySGC92YPcAMxKh63un6ZokhM",
+      "source_sheet_name": "Jueves 01/10/26",
+      "source_folder_name": "28 DE SEPTIEMBRE AL 02 DE OCTUBRE",
+      "hash": "e62fa33959d1d4bb32ebf1b1bbb61d921454508b06d4caa92f900e2b8400d3c5"
     },
     {
       "date": "01/10/2026",
@@ -21456,6 +21384,54 @@
       "source_sheet_name": "Jueves 01/10/26",
       "source_folder_name": "28 DE SEPTIEMBRE AL 02 DE OCTUBRE",
       "hash": "008b023ab1852e5cf5ffec3c347ed3af67acf6196692b5e9950a326852bfcee5"
+    },
+    {
+      "date": "01/10/2026",
+      "day": "Jueves",
+      "time_slot": "CONDICIONAL",
+      "qx": "Q1",
+      "specialty": "Ginecología y Obstetricia",
+      "doctor": "Lisi",
+      "patient": "SEVECA YAMINA",
+      "phone": "11-54594326",
+      "age": "44",
+      "dni": "28.509.868",
+      "ailment": "",
+      "surgery": "lt videp",
+      "anesthesia": "",
+      "boxes": "",
+      "insurance": "OSEF (Provincial Fueguino)",
+      "rx": "",
+      "status": "COMPLETA",
+      "is_empty_slot": false,
+      "source_sheet_id": "1vY-Il62W7kEeVdwt5zlySGC92YPcAMxKh63un6ZokhM",
+      "source_sheet_name": "Jueves 01/10/26",
+      "source_folder_name": "28 DE SEPTIEMBRE AL 02 DE OCTUBRE",
+      "hash": "f4619d1ffadadc716b24aab442424ba14556d0eea8d89bb13f06181dcb67124a"
+    },
+    {
+      "date": "01/10/2026",
+      "day": "Jueves",
+      "time_slot": "CONDICIONAL",
+      "qx": "Q4",
+      "specialty": "Traumatología y Ortopedia",
+      "doctor": "Gomez",
+      "patient": "VILLARREAL GLORIA",
+      "phone": "",
+      "age": "",
+      "dni": "13.954.085",
+      "ailment": "HOMBRO",
+      "surgery": "",
+      "anesthesia": "SI",
+      "boxes": "",
+      "insurance": "OSEF (Provincial Fueguino)",
+      "rx": "",
+      "status": "NO PASO HACER TRAMITE",
+      "is_empty_slot": false,
+      "source_sheet_id": "1vY-Il62W7kEeVdwt5zlySGC92YPcAMxKh63un6ZokhM",
+      "source_sheet_name": "Jueves 01/10/26",
+      "source_folder_name": "28 DE SEPTIEMBRE AL 02 DE OCTUBRE",
+      "hash": "2b43ee941041e780d94bf244bda37c6ce64d0cefcec1a07cc17a0c7fe44ca5c1"
     },
     {
       "date": "01/10/2026",
@@ -21623,7 +21599,7 @@
       "source_sheet_id": "1C5mXd-JaCtiPOfWATI4N5hMWEV4hZKC7oLMurqjNAiw",
       "source_sheet_name": "Viernes 02/10/26",
       "source_folder_name": "28 DE SEPTIEMBRE AL 02 DE OCTUBRE",
-      "hash": "f33f7e4d282f53651cd5ea1fcb127aff7b63770d670c49d7e7f4dad203122e9d"
+      "hash": "f2a24c04ef87a355ce06bf8af20bfadde2f3accde8d2c1e411a014e0846548ba"
     },
     {
       "date": "02/10/2026",
@@ -21696,6 +21672,30 @@
       "source_sheet_name": "Viernes 02/10/26",
       "source_folder_name": "28 DE SEPTIEMBRE AL 02 DE OCTUBRE",
       "hash": "96740d9d04026c89cdb395c198fef5158487843c560d2b474d696f6dea03d2f4"
+    },
+    {
+      "date": "02/10/2026",
+      "day": "Viernes",
+      "time_slot": "10 a 12 hs",
+      "qx": "Q4",
+      "specialty": "Cirugía Vascular",
+      "doctor": "Saure",
+      "patient": "BENITEZ GLADYS",
+      "phone": "2901-497049",
+      "age": "39",
+      "dni": "33.330.987",
+      "ailment": "VARICES",
+      "surgery": "SAFENCTOMIA BILATERAL",
+      "anesthesia": "SI",
+      "boxes": "",
+      "insurance": "SUMAR (Salud Pública)",
+      "rx": "NO",
+      "status": "",
+      "is_empty_slot": false,
+      "source_sheet_id": "1C5mXd-JaCtiPOfWATI4N5hMWEV4hZKC7oLMurqjNAiw",
+      "source_sheet_name": "Viernes 02/10/26",
+      "source_folder_name": "28 DE SEPTIEMBRE AL 02 DE OCTUBRE",
+      "hash": "4d854b172015c16e2d0a7cef50bbd8bad7cc0a9fc02ab5a64cbc0be40841a8b2"
     },
     {
       "date": "02/10/2026",
@@ -22036,13 +22036,37 @@
     {
       "date": "06/10/2026",
       "day": "Martes",
+      "time_slot": "08 a 10 hs",
+      "qx": "",
+      "specialty": "Traumatología y Ortopedia",
+      "doctor": "Galarza",
+      "patient": "BAEZ AGUEDO",
+      "phone": "",
+      "age": "61",
+      "dni": "",
+      "ailment": "",
+      "surgery": "MENISECTOMIA RD",
+      "anesthesia": "SI",
+      "boxes": "",
+      "insurance": "SUMAR (Salud Pública)",
+      "rx": "",
+      "status": "",
+      "is_empty_slot": false,
+      "source_sheet_id": "1FveSeSDAonfDesr9Vrje9G-oNsm8-tDih9rUbvVW7ek",
+      "source_sheet_name": "Martes 06/10/26",
+      "source_folder_name": "05 AL 09 DE OCTUBRE",
+      "hash": "104e4542c36b840b0a241c3091aadc4d4ca044a91196a7d8a460d80055e0b868"
+    },
+    {
+      "date": "06/10/2026",
+      "day": "Martes",
       "time_slot": "10 a 12 hs",
       "qx": "Q3",
       "specialty": "Ginecología y Obstetricia",
       "doctor": "Ertel",
       "patient": "SCHULZ NATALIA",
-      "phone": "",
-      "age": "",
+      "phone": "604183",
+      "age": "43",
       "dni": "28509889",
       "ailment": "",
       "surgery": "COLOCACION DE DIU",
@@ -22080,6 +22104,30 @@
       "source_sheet_name": "Martes 06/10/26",
       "source_folder_name": "05 AL 09 DE OCTUBRE",
       "hash": "aecadbf1faf9f4477f3021c767ea1ecdee62fe16396eeb9a3dc628a24a7b4d0e"
+    },
+    {
+      "date": "06/10/2026",
+      "day": "Martes",
+      "time_slot": "10 a 12 hs",
+      "qx": "",
+      "specialty": "Traumatología y Ortopedia",
+      "doctor": "Galarza",
+      "patient": "MIRABETE LAURA",
+      "phone": "",
+      "age": "60",
+      "dni": "22.818.562",
+      "ailment": "",
+      "surgery": "RETIRO MATERIAL RD",
+      "anesthesia": "SI",
+      "boxes": "",
+      "insurance": "PARTICULAR",
+      "rx": "",
+      "status": "",
+      "is_empty_slot": false,
+      "source_sheet_id": "1FveSeSDAonfDesr9Vrje9G-oNsm8-tDih9rUbvVW7ek",
+      "source_sheet_name": "Martes 06/10/26",
+      "source_folder_name": "05 AL 09 DE OCTUBRE",
+      "hash": "61b5aa4a018a378ad5b74ae3855d7f46f2beb1bd2ceff796c5d4f9100cc3e55e"
     },
     {
       "date": "06/10/2026",
@@ -22228,6 +22276,54 @@
     {
       "date": "07/10/2026",
       "day": "Miércoles",
+      "time_slot": "Endoscopia",
+      "qx": "Q3",
+      "specialty": "Cirugía General",
+      "doctor": "Colque",
+      "patient": "BRAVO Jonathan",
+      "phone": "2234242812",
+      "age": "35",
+      "dni": "95.844.268",
+      "ailment": "lipoma en abdomen",
+      "surgery": "EXERESIS",
+      "anesthesia": "",
+      "boxes": "AMBULATORIA",
+      "insurance": "SUMAR (Salud Pública)",
+      "rx": "",
+      "status": "COMPLETA",
+      "is_empty_slot": false,
+      "source_sheet_id": "1_c-PaXt-6PFy00P-b9e_ixKkrglZ2dMZcLcb-o6GDXs",
+      "source_sheet_name": "MiÃ©rcoles 07/10/26",
+      "source_folder_name": "05 AL 09 DE OCTUBRE",
+      "hash": "8b7d48b2a4af57c467f760870218749a29d07af8f3bfd46f62cf13d76d495a92"
+    },
+    {
+      "date": "07/10/2026",
+      "day": "Miércoles",
+      "time_slot": "Endoscopia",
+      "qx": "",
+      "specialty": "Cirugía Vascular",
+      "doctor": "Saure",
+      "patient": "LAHOZ SUSANA",
+      "phone": "2901551835",
+      "age": "54",
+      "dni": "19.117.904",
+      "ailment": "IRC",
+      "surgery": "FISTULA",
+      "anesthesia": "SEDACION",
+      "boxes": "AMBULATORIA",
+      "insurance": "SUMAR (Salud Pública)",
+      "rx": "NO",
+      "status": "COMPLETA",
+      "is_empty_slot": false,
+      "source_sheet_id": "1_c-PaXt-6PFy00P-b9e_ixKkrglZ2dMZcLcb-o6GDXs",
+      "source_sheet_name": "MiÃ©rcoles 07/10/26",
+      "source_folder_name": "05 AL 09 DE OCTUBRE",
+      "hash": "7c3604323f22e6dc6f19f908bc731b93b6121e3256d145daec477d84403c5df3"
+    },
+    {
+      "date": "07/10/2026",
+      "day": "Miércoles",
       "time_slot": "Locales",
       "qx": "",
       "specialty": "Cirugía Infantil",
@@ -22272,6 +22368,54 @@
       "source_sheet_name": "MiÃ©rcoles 07/10/26",
       "source_folder_name": "05 AL 09 DE OCTUBRE",
       "hash": "a026a51cd394b1282e82f0f5f8c4cf5a919974cfb8617224154373593d748776"
+    },
+    {
+      "date": "07/10/2026",
+      "day": "Miércoles",
+      "time_slot": "Locales",
+      "qx": "Q3",
+      "specialty": "Cirugía General",
+      "doctor": "Colque",
+      "patient": "Ferreyra Rodrigo",
+      "phone": "1123994034",
+      "age": "38",
+      "dni": "33.688.185",
+      "ailment": "quiste sebaceo en espalda",
+      "surgery": "exeresis.",
+      "anesthesia": "",
+      "boxes": "AMBULATORIA",
+      "insurance": "SUMAR (Salud Pública)",
+      "rx": "",
+      "status": "COMPLETA",
+      "is_empty_slot": false,
+      "source_sheet_id": "1_c-PaXt-6PFy00P-b9e_ixKkrglZ2dMZcLcb-o6GDXs",
+      "source_sheet_name": "MiÃ©rcoles 07/10/26",
+      "source_folder_name": "05 AL 09 DE OCTUBRE",
+      "hash": "5aa32564673656c4344614e430584459e165c38e71437052432c713782e63ce4"
+    },
+    {
+      "date": "07/10/2026",
+      "day": "Miércoles",
+      "time_slot": "Locales",
+      "qx": "Q4",
+      "specialty": "Cirugía General",
+      "doctor": "Colque",
+      "patient": "ALVIAN CAMILA",
+      "phone": "646554",
+      "age": "31",
+      "dni": "38.784.983",
+      "ailment": "",
+      "surgery": "",
+      "anesthesia": "",
+      "boxes": "",
+      "insurance": "SUMAR (Salud Pública)",
+      "rx": "",
+      "status": "COMPLETA CAMBIAR FECHA PEDIDO",
+      "is_empty_slot": false,
+      "source_sheet_id": "1_c-PaXt-6PFy00P-b9e_ixKkrglZ2dMZcLcb-o6GDXs",
+      "source_sheet_name": "MiÃ©rcoles 07/10/26",
+      "source_folder_name": "05 AL 09 DE OCTUBRE",
+      "hash": "28faafeb85827b12a23000a4a0cecf4f8cdde1b33c51b49a11fdf7af2d92cc97"
     },
     {
       "date": "08/10/2026",
@@ -22344,6 +22488,30 @@
       "source_sheet_name": "Jueves 08/10/26",
       "source_folder_name": "05 AL 09 DE OCTUBRE",
       "hash": "88f583e9d54d833da9a5f29db940993af04c773325853b4eec5aadf28bb100f4"
+    },
+    {
+      "date": "08/10/2026",
+      "day": "Jueves",
+      "time_slot": "08 a 10 hs",
+      "qx": "",
+      "specialty": "Traumatología y Ortopedia",
+      "doctor": "Montenegro",
+      "patient": "GALARZA RAMON",
+      "phone": "",
+      "age": "53",
+      "dni": "26.135.662",
+      "ailment": "FX HUMERO DISTAL DER",
+      "surgery": "",
+      "anesthesia": "SI",
+      "boxes": "",
+      "insurance": "SUMAR (Salud Pública)",
+      "rx": "",
+      "status": "",
+      "is_empty_slot": false,
+      "source_sheet_id": "1puZ4v0dDTwCeRa9QYbKgx1C5Xkt5BafJ557NhMFaolo",
+      "source_sheet_name": "Jueves 08/10/26",
+      "source_folder_name": "05 AL 09 DE OCTUBRE",
+      "hash": "3749aacb04b1912ddf5bed71031b7874f91fd8cfc22f84580ffd22fa41bbcdc4"
     },
     {
       "date": "08/10/2026",
@@ -22898,6 +23066,30 @@
       "hash": "1dc71a64d49f5b79cec10a8822a4bddd4cc3750e7d7210a82b53730a84ce3727"
     },
     {
+      "date": "16/10/2026",
+      "day": "Viernes",
+      "time_slot": "08 a 10 hs",
+      "qx": "Q4",
+      "specialty": "Neurocirugía",
+      "doctor": "Delfitto",
+      "patient": "ACOSTA RIVERO",
+      "phone": "2901505827",
+      "age": "43",
+      "dni": "19.102.363",
+      "ailment": "BIOPSIA VERTEBRAL",
+      "surgery": "",
+      "anesthesia": "SI",
+      "boxes": "",
+      "insurance": "Incluir Salud",
+      "rx": "SI",
+      "status": "",
+      "is_empty_slot": false,
+      "source_sheet_id": "1uNBnfpi5iGfB_Y65JGBb9em7NhXojsMbhdWKVLil9kM",
+      "source_sheet_name": "Viernes 16/10/26",
+      "source_folder_name": "13 AL 16 DE OCTUBRE",
+      "hash": "fe8b1bc56f4bd64490bacdbf786b69b71a342654862d971d56fe2254f7a45cd1"
+    },
+    {
       "date": "22/10/2026",
       "day": "Jueves",
       "time_slot": "08 a 10 hs",
@@ -22992,6 +23184,30 @@
       "source_sheet_name": "Martes 03/11/26",
       "source_folder_name": "02 AL 06 DE NOVIEMBRE",
       "hash": "2c46dffd47b100b002bd2a4358655bd12a4844257c891a8d2a12d0eb19269ad7"
+    },
+    {
+      "date": "03/11/2026",
+      "day": "Martes",
+      "time_slot": "10 a 12 hs",
+      "qx": "Q3",
+      "specialty": "Ginecología y Obstetricia",
+      "doctor": "Sasaki",
+      "patient": "CABEZAS ERICA ROSA",
+      "phone": "",
+      "age": "",
+      "dni": "18.775.652",
+      "ailment": "",
+      "surgery": "TOT + CLCOPERINEORAFIA",
+      "anesthesia": "SI",
+      "boxes": "",
+      "insurance": "IOSFA (Fuerzas Armadas)",
+      "rx": "",
+      "status": "",
+      "is_empty_slot": false,
+      "source_sheet_id": "1nTmwQPCkRzlkPHceROfj4Wmz0TsU3tjP7zdOIFEQ2Yc",
+      "source_sheet_name": "Martes 03/11/26",
+      "source_folder_name": "02 AL 06 DE NOVIEMBRE",
+      "hash": "adbc1aa8fb483e33892b9adddb4cbd8dd173e9261897f472ee6d79f4f435c7da"
     }
   ]
 }
