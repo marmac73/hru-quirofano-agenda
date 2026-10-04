@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-03T06:13:24.714472",
+  "last_updated": "2026-10-04T06:41:06.782648",
   "surgeries": [
     {
       "date": "08/06/2026",
@@ -22944,6 +22944,30 @@
       "source_sheet_name": "Jueves 08/10/26",
       "source_folder_name": "05 AL 09 DE OCTUBRE",
       "hash": "029acc438d4e7c7cad6daca68117eb8b44832e8157f66a8cee0ec3f8a8ace6ba"
+    },
+    {
+      "date": "08/10/2026",
+      "day": "Jueves",
+      "time_slot": "10 a 12 hs",
+      "qx": "",
+      "specialty": "Ginecología y Obstetricia",
+      "doctor": "Peiffer",
+      "patient": "OBERTI NATALIA",
+      "phone": "",
+      "age": "40",
+      "dni": "32.336.315",
+      "ailment": "LTVL",
+      "surgery": "",
+      "anesthesia": "SI",
+      "boxes": "",
+      "insurance": "OSEF (Provincial Fueguino)",
+      "rx": "",
+      "status": "",
+      "is_empty_slot": false,
+      "source_sheet_id": "1puZ4v0dDTwCeRa9QYbKgx1C5Xkt5BafJ557NhMFaolo",
+      "source_sheet_name": "Jueves 08/10/26",
+      "source_folder_name": "05 AL 09 DE OCTUBRE",
+      "hash": "59c7b22d404225d3b49448c2d09490f0e4f489535a04c52f42e5cd6d979fc36b"
     },
     {
       "date": "08/10/2026",
