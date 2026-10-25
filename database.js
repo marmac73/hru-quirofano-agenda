@@ -1,5 +1,5 @@
 window.SURGICAL_DATABASE = {
-  "last_updated": "2026-10-24T05:33:14.302358",
+  "last_updated": "2026-10-25T05:49:37.840821",
   "surgeries": [
     {
       "date": "08/06/2026",
