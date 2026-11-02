@@ -1,5 +1,5 @@
 window.SURGICAL_DATABASE = {
-  "last_updated": "2026-11-01T07:14:19.758958",
+  "last_updated": "2026-11-02T07:29:55.433371",
   "surgeries": [
     {
       "date": "08/06/2026",
@@ -29946,7 +29946,7 @@ window.SURGICAL_DATABASE = {
       "boxes": "",
       "insurance": "PARTICULAR",
       "rx": "",
-      "status": "",
+      "status": "COMPLETA",
       "is_empty_slot": false,
       "source_sheet_id": "1vHGNbHqTmT640XKvJY7zNyarxLfb40wkC2cDV_xrf74",
       "source_sheet_name": "Jueves 19/11/26",
